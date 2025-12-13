@@ -1,1 +1,5 @@
-.terraform*
+.clj-kondo/
+.lsp/
+.nrepl-port
+public/
+.terraform/
