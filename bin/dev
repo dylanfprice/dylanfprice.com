@@ -1,0 +1,78 @@
+#!/usr/bin/env bb
+; vi: ft=clojure
+
+(ns dev
+  (:require [babashka.cli :as cli]
+            [clojure.java.process :as process]
+            [clojure.string :as string]))
+
+(comment
+  (require '[clojure.repl :as repl])
+  (repl/dir clojure.java.process)
+  (repl/doc process/exec))
+
+(def help-spec
+  {:help {:alias :h
+          :coerce :boolean}})
+
+(defn terraform-command [args]
+  (let [get-caller-identity (process/start
+                             {:out :discard :err :discard}
+                             "aws" "--profile=dfp" "sts" "get-caller-identity")
+        logged-in (= 0 @(process/exit-ref get-caller-identity))]
+    (when (not logged-in)
+      (process/exec {:out :inherit :err :inherit}
+                    "aws" "--profile=dfp" "sso" "login")))
+  (let [terraform (apply process/start
+                         {:in :inherit :out :inherit :err :inherit}
+                         "terraform" args)
+        exit-code @(process/exit-ref terraform)]
+    (System/exit exit-code)))
+
+(declare help)
+
+(def command-table
+  [{:cmds ["terraform"]
+    :desc "Use terraform."
+    :fn (fn [_args] (terraform-command (rest *command-line-args*)))
+    :args->opts [:subcommand]}
+   {:cmds []
+    :fn #(println (help %))
+    :spec help-spec}])
+
+(defn help [{:keys [opts]}]
+  (let [commands (->> command-table (mapcat :cmds) (string/join ","))
+        cmd-help (eduction
+                  (map (juxt (comp first :cmds) :desc))
+                  (filter first)
+                  (map #(str "  " (string/join "\t\t" %)))
+                  command-table)]
+    (if (:help opts)
+      (->> (concat
+            [(str "usage: dev [-h] {" commands "} ...")
+             ""
+             "options:"
+             (cli/format-opts {:spec help-spec})
+             ""
+             "subcommands:"]
+            cmd-help)
+           (string/join "\n"))
+      (->> [(str "usage: dev [-h] {" commands "} ...")
+            (str "dev: error: the following arguments are required: {" commands "}")]
+           (string/join "\n")))))
+
+(defn error [{:keys [spec type cause msg option] :as data}]
+  (if (= :org.babashka/cli type)
+    (case cause
+      :require
+      (println
+       (format "Missing required argument:\n%s"
+               (cli/format-opts {:spec (select-keys spec [option])})))
+      (println msg))
+    (throw (ex-info msg data)))
+  (System/exit 1))
+
+(defn -main [args]
+  (cli/dispatch command-table args {:error-fn error}))
+
+(-main *command-line-args*)
