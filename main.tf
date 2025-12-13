@@ -46,6 +46,22 @@ resource "aws_route53_zone" "main" {
   name = local.domain_name
 }
 
+resource "aws_route53_record" "a" {
+  zone_id = aws_route53_zone.main.zone_id
+  name    = ""
+  type    = "A"
+  ttl     = 1800
+  records = ["46.23.81.157"]
+}
+
+resource "aws_route53_record" "aaaa" {
+  zone_id = aws_route53_zone.main.zone_id
+  name    = ""
+  type    = "AAAA"
+  ttl     = 1800
+  records = ["2a03:6000:1813:1337::157"]
+}
+
 resource "aws_route53_record" "mx" {
   zone_id = aws_route53_zone.main.zone_id
   name    = ""
