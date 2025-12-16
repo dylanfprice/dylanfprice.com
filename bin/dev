@@ -3,63 +3,65 @@
 
 (ns dev
   (:require [babashka.cli :as cli]
-            [clojure.java.process :as process]
-            [clojure.string :as string]))
+            [clojure.string :as string]
+            [dylanfprice.com.core :as core]))
 
 (comment
   (require '[clojure.repl :as repl])
-  (repl/dir clojure.java.process)
-  (repl/doc process/exec))
+  (repl/dir string/join)
+  (repl/doc string/join))
 
 (def help-spec
   {:help {:alias :h
           :coerce :boolean}})
 
-(defn terraform-command [args]
-  (let [get-caller-identity (process/start
-                             {:out :discard :err :discard}
-                             "aws" "--profile=dfp" "sts" "get-caller-identity")
-        logged-in (= 0 @(process/exit-ref get-caller-identity))]
-    (when (not logged-in)
-      (process/exec {:out :inherit :err :inherit}
-                    "aws" "--profile=dfp" "sso" "login")))
-  (let [terraform (apply process/start
-                         {:in :inherit :out :inherit :err :inherit}
-                         "terraform" args)
-        exit-code @(process/exit-ref terraform)]
-    (System/exit exit-code)))
+(def serve-spec
+  (merge
+   help-spec
+   {:port {:desc "Port number."
+           :alias :p
+           :coerce :int
+           :default 8000}}))
+
+(def serve-help
+  (->> ["Usage:"
+        "  dev serve [option]"
+        ""
+        "Options:"
+        (cli/format-opts {:spec serve-spec})]
+       (string/join "\n")))
 
 (declare help)
 
 (def command-table
   [{:cmds ["terraform"]
     :desc "Use terraform."
-    :fn (fn [_args] (terraform-command (rest *command-line-args*)))
-    :args->opts [:subcommand]}
+    :fn (fn [_parse-args] (core/terraform (rest *command-line-args*)))}
+   {:cmds ["serve"]
+    :desc "Start dev server."
+    :fn (fn [{:keys [opts]}]
+          (if (:help opts) (println serve-help) (core/serve opts)))
+    :spec serve-spec}
    {:cmds []
-    :fn #(println (help %))
+    :fn (fn [parse-args] (println (help parse-args)))
     :spec help-spec}])
 
 (defn help [{:keys [opts]}]
-  (let [commands (->> command-table (mapcat :cmds) (string/join ","))
-        cmd-help (eduction
+  (let [cmd-help (eduction
                   (map (juxt (comp first :cmds) :desc))
                   (filter first)
-                  (map #(str "  " (string/join "\t\t" %)))
+                  (map #(apply format "  %-15s %s" %))
                   command-table)]
-    (if (:help opts)
-      (->> (concat
-            [(str "usage: dev [-h] {" commands "} ...")
-             ""
-             "options:"
-             (cli/format-opts {:spec help-spec})
-             ""
-             "subcommands:"]
-            cmd-help)
-           (string/join "\n"))
-      (->> [(str "usage: dev [-h] {" commands "} ...")
-            (str "dev: error: the following arguments are required: {" commands "}")]
-           (string/join "\n")))))
+    (->> (concat
+          ["Usage:"
+           (str "  dev [option] [command] ...")
+           ""
+           "Options:"
+           (cli/format-opts {:spec help-spec})
+           ""
+           "Commands:"]
+          cmd-help)
+         (string/join "\n"))))
 
 (defn error [{:keys [spec type cause msg option] :as data}]
   (if (= :org.babashka/cli type)
