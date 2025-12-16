@@ -15,6 +15,8 @@
   {:help {:alias :h
           :coerce :boolean}})
 
+(def build-spec help-spec)
+
 (def serve-spec
   (merge
    help-spec
@@ -22,6 +24,14 @@
            :alias :p
            :coerce :int
            :default 8000}}))
+
+(def build-help
+  (->> ["Usage:"
+        "  dev build [option]"
+        ""
+        "Options:"
+        (cli/format-opts {:spec build-spec})]
+       (string/join "\n")))
 
 (def serve-help
   (->> ["Usage:"
@@ -35,18 +45,23 @@
 
 (def command-table
   [{:cmds ["terraform"]
-    :desc "Use terraform."
+    :desc "Use terraform to provision dns etc."
     :fn (fn [_parse-args] (core/terraform (rest *command-line-args*)))}
+   {:cmds ["build"]
+    :desc "Build site."
+    :fn (fn [{:keys [opts]}]
+          (if (:help opts) (println build-help) (core/build)))
+    :spec build-spec}
    {:cmds ["serve"]
     :desc "Start dev server."
     :fn (fn [{:keys [opts]}]
           (if (:help opts) (println serve-help) (core/serve opts)))
     :spec serve-spec}
    {:cmds []
-    :fn (fn [parse-args] (println (help parse-args)))
+    :fn (fn [_parse-args] (println (help)))
     :spec help-spec}])
 
-(defn help [{:keys [opts]}]
+(defn help []
   (let [cmd-help (eduction
                   (map (juxt (comp first :cmds) :desc))
                   (filter first)
