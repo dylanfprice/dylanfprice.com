@@ -14,7 +14,12 @@
   (run!
    (fn [[path, hiccup]] (spit (str "public/" path)
                               (str (h/html hiccup))))
-   (pages/all-pages)))
+   (pages/all-pages))
+  (process/exec {:err :pipe}
+                "tailwindcss"
+                "--optimize"
+                "-i" "src/main.css"
+                "-o" "public/static/main.css"))
 
 (defn terraform [args]
   (let [get-caller-identity (process/start
