@@ -8,18 +8,6 @@
 
 (def public-dir "public")
 
-(defn build []
-  (.mkdirs (io/file public-dir "recipes"))
-  (run!
-   (fn [[path, hiccup]] (spit (str "public/" path)
-                              (str (h/html hiccup))))
-   (pages/all-pages))
-  (process/exec {:err :pipe}
-                "tailwindcss"
-                "--optimize"
-                "-i" "src/main.css"
-                "-o" "public/static/main.css"))
-
 (defn terraform [args]
   (let [get-caller-identity (process/start
                              {:out :discard :err :discard}
@@ -34,5 +22,27 @@
         exit-code @(process/exit-ref terraform)]
     (System/exit exit-code)))
 
+(defn build []
+  (.mkdirs (io/file public-dir "recipes"))
+  (run!
+   (fn [[path, hiccup]] (spit (str "public/" path)
+                              (str (h/html hiccup))))
+   (pages/all-pages))
+  (process/exec {:err :pipe}
+                "tailwindcss"
+                "--optimize"
+                "-i" "src/main.css"
+                "-o" "public/static/main.css"))
+
 (defn serve [{:keys [port]}]
   (http-server/serve {:dir public-dir :port port}))
+
+(defn publish []
+  (process/exec "tar"
+                "--directory=public"
+                "--file=site.tar.gz"
+                "--create" "--gzip"
+                ".")
+  (process/exec "hut" "pages" "publish"
+                "--domain=dylanfprice.com"
+                "site.tar.gz"))
