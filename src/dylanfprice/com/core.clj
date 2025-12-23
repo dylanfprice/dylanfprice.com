@@ -7,7 +7,6 @@
    [dylanfprice.com.pages :as pages]))
 
 (def public-dir "public")
-(def recipes-dir "recipes")
 
 (defn build []
   (.mkdirs (io/file public-dir "recipes"))
