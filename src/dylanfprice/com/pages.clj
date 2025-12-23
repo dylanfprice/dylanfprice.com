@@ -6,16 +6,21 @@
 
 (def recipes-dir "recipes")
 
+(defn header-link [attrs & body]
+  [:a
+   (merge {:class ["text-gray-600" "hover:text-blue-600"]}
+          attrs)
+   body])
+
 (defn page [& content]
   [:html
    [:head
     [:link {:rel "stylesheet" :href "/static/main.css"}]]
    [:body
-    (let [header-classes ["text-gray-600" "hover:text-blue-600"]]
-      [:header {:class ["max-w-3xl" "mx-auto" "mb-10" "font-light" "text-lg" "grid" "grid-flow-col"]}
-       [:a {:class header-classes :href "/"} "dylanfprice.com"]
-       [:nav {:class ["grid" "grid-flow-col" "gap-4" "justify-end"]}
-        [:a {:class header-classes :href "/recipes"} "Recipes"]]])
+    [:header {:class ["max-w-3xl" "mx-auto" "mb-10" "font-light" "text-lg" "grid" "grid-flow-col"]}
+     (header-link {:href "/"} "dylanfprice.com")
+     [:nav {:class ["grid" "grid-flow-col" "gap-4" "justify-end"]}
+      (header-link {:href "/recipes"} "Recipes")]]
     [:main {:class ["max-w-3xl" "mt-2" "mx-auto"]} content]]])
 
 (defn home []
