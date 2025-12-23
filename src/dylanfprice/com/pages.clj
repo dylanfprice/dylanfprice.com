@@ -15,7 +15,6 @@
       [:header {:class ["max-w-3xl" "mx-auto" "mb-10" "font-light" "text-lg" "grid" "grid-flow-col"]}
        [:a {:class header-classes :href "/"} "dylanfprice.com"]
        [:nav {:class ["grid" "grid-flow-col" "gap-4" "justify-end"]}
-        [:a {:class header-classes :href "/"} "Home"]
         [:a {:class header-classes :href "/recipes"} "Recipes"]]])
     [:main {:class ["max-w-3xl" "mt-2" "mx-auto"]} content]]])
 
