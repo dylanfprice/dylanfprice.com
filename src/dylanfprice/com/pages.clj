@@ -25,9 +25,11 @@
     [:link {:rel "stylesheet" :href "/static/main.css"}]
     [:title title]]
    [:body {:class "p-2"}
-    [:header {:class ["max-w-3xl" "mx-auto" "mb-10" "font-light" "text-lg" "grid" "grid-flow-col"]}
+    [:header {:class ["max-w-3xl" "mx-auto" "mb-10"
+                      "font-light" "text-lg"
+                      "grid" "grid-flow-row" "md:grid-flow-col"]}
      (header-link {:href "/"} "dylanfprice.com")
-     [:nav {:class ["grid" "grid-flow-col" "gap-4" "justify-end"]}
+     [:nav {:class ["grid" "grid-flow-col" "gap-4" "justify-center" "md:justify-end"]}
       (header-link {:href "/recipes"} "Recipes")]]
     [:main {:class ["max-w-3xl" "mt-2" "mx-auto"]} content]]])
 
@@ -70,7 +72,7 @@
     [new-file (page (title f) hiccup)]))
 
 (defn recipes []
-  (let [recipe-files (map #(str recipes-dir "/" %) (.list (io/file recipes-dir)))
+  (let [recipe-files (map #(str recipes-dir "/" %) (-> recipes-dir  io/file .list sort))
         recipe-pages (map recipe recipe-files)
         recipe-list ["recipes/index.html"
                      (page "Recipes"
