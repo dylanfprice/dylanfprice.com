@@ -4,6 +4,11 @@
    [clojure.string :as string]
    [nextjournal.markdown :as md]))
 
+(comment
+  (require '[clojure.repl :as repl])
+  (repl/doc md/into-hiccup)
+  md/default-hiccup-renderers)
+
 (def recipes-dir "recipes")
 
 (defn header-link [attrs & body]
@@ -26,9 +31,31 @@
 (defn home []
   ["index.html" (page "")])
 
+(defn ast->hiccup [ast]
+  (md/->hiccup
+   (assoc md/default-hiccup-renderers
+          :footnote-ref (fn [_ctx {:keys [label ref]}]
+                          [:sup [:a
+                                 {:id (str "reference-" ref)
+                                  :href (str "#footnote-" ref)}
+                                 label]]))
+   ast))
+
+(defn ast-footnotes->hiccup [ast]
+  (let [renderers (assoc md/default-hiccup-renderers
+                         :footnote (fn [_ctx {:keys [label ref] :as node}]
+                                     [:p {:id (str "footnote-" ref)}
+                                      [:a {:href (str "#reference-" ref)} (str "[" label "]: ")]
+                                      (md/node->text node)]))]
+    (for [footnote (:footnotes ast)]
+      (md/->hiccup renderers footnote))))
+
 (defn recipe [f]
   (let [new-file (string/replace f #".md$" ".html")
-        hiccup (-> f slurp md/parse md/->hiccup)]
+        ast (-> f slurp md/parse)
+        hiccup (list (ast->hiccup ast)
+                     [:hr {:class "mt-6"}]
+                     [:section (ast-footnotes->hiccup ast)])]
     [new-file (page hiccup)]))
 
 (defn recipes []
