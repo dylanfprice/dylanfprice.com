@@ -58,7 +58,7 @@
   (-> f
       io/file
       .getName
-      (string/replace #".html$" "")
+      (string/replace #"\.(html|md)$" "")
       (string/replace "-" " ")
       (string/capitalize)))
 
