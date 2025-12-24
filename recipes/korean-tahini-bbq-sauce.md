@@ -2,7 +2,7 @@
 
 ## Ingredients
 
-- 1/4 cup water
+- 1/4 plus 1/8 cup water
 - 1/4 cup red miso
 - 1-inch piece ginger, peeled and minced
 - 2 cloves garlic
