@@ -8,7 +8,7 @@
 
 ## Directions
 
-1. Preheat the oven to 400 degrees F.
+1. Preheat the oven to 400°F.
 2. Scrub the potato under warm water with a clean scrubbing sponge or brush. Pat dry. 
    Use your hands to rub the potato with oil. Sprinkle the skin evenly with 1/2 teaspoon 
    salt. Place the potato on a baking sheet (placing it directly on the oven rack could 
