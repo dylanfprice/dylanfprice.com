@@ -24,7 +24,7 @@
     [:meta {:name "viewport" :content "width=device-width"}]
     [:link {:rel "stylesheet" :href "/static/main.css"}]
     [:title title]]
-   [:body
+   [:body {:class "p-2"}
     [:header {:class ["max-w-3xl" "mx-auto" "mb-10" "font-light" "text-lg" "grid" "grid-flow-col"]}
      (header-link {:href "/"} "dylanfprice.com")
      [:nav {:class ["grid" "grid-flow-col" "gap-4" "justify-end"]}
@@ -50,7 +50,7 @@
                                      [:p {:id (str "footnote-" ref)}
                                       (str "[" label "]: ")
                                       (md/node->text node)
-                                      [:a {:href (str "#reference-" ref)} "⏎"]]))]
+                                      [:a {:href (str "#reference-" ref)} "↩"]]))]
     (for [footnote (:footnotes ast)]
       (md/->hiccup renderers footnote))))
 
