@@ -1,0 +1,36 @@
+image: debian/unstable
+oauth: pages.sr.ht/PAGES:RW
+packages:
+- hut
+- default-jre
+sources:
+- git@git.sr.ht:~dylanfprice/dylanfprice.com
+secrets:
+- a9eae2ca-0cf7-4ac4-b1b6-56f8bd32249e
+submitter:
+  git.sr.ht:
+    enabled: true
+    allow-refs:
+    - refs/heads/main
+environment:
+  site: dylanfprice.com
+  bb_release: 1.12.213
+  tw_release: 4.0.0
+tasks:
+- install-bb: |
+    curl --remote-name\
+         --follow\
+         https://github.com/babashka/babashka/releases/download/v${bb_release}/babashka-${bb_release}-linux-amd64-static.tar.gz
+    sudo tar --extract\
+        --gunzip\
+        --file=babashka-${bb_release}-linux-amd64-static.tar.gz\
+        --directory=/usr/local/bin\
+        bb
+- install-tailwind: |
+    sudo curl --output=/usr/local/bin/tailwindcss\
+              --follow\
+              https://github.com/tailwindlabs/tailwindcss/releases/download/v${tw_release}/tailwindcss-linux-x64
+    sudo chmod +x /usr/local/bin/tailwindcss
+- publish: |
+    cd $site
+    bin/dev build
