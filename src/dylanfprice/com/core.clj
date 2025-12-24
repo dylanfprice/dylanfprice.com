@@ -26,7 +26,7 @@
   (.mkdirs (io/file public-dir "recipes"))
   (run!
    (fn [[path, hiccup]] (spit (str "public/" path)
-                              (str (h/html hiccup))))
+                              (str (h/html {:mode :html} (h/raw "<!DOCTYPE html>") hiccup))))
    (pages/all-pages))
   (process/exec {:err :pipe}
                 "tailwindcss"

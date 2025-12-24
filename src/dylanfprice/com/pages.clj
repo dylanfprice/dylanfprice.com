@@ -17,10 +17,13 @@
           attrs)
    body])
 
-(defn page [& content]
-  [:html
+(defn page [title & content]
+  [:html {:lang "en-US"}
    [:head
-    [:link {:rel "stylesheet" :href "/static/main.css"}]]
+    [:meta {:charset "utf-8"}]
+    [:meta {:name "viewport" :content "width=device-width"}]
+    [:link {:rel "stylesheet" :href "/static/main.css"}]
+    [:title title]]
    [:body
     [:header {:class ["max-w-3xl" "mx-auto" "mb-10" "font-light" "text-lg" "grid" "grid-flow-col"]}
      (header-link {:href "/"} "dylanfprice.com")
@@ -29,7 +32,7 @@
     [:main {:class ["max-w-3xl" "mt-2" "mx-auto"]} content]]])
 
 (defn home []
-  ["index.html" (page "")])
+  ["index.html" (page "Home" "")])
 
 (defn ast->hiccup [ast]
   (md/->hiccup
@@ -45,33 +48,35 @@
   (let [renderers (assoc md/default-hiccup-renderers
                          :footnote (fn [_ctx {:keys [label ref] :as node}]
                                      [:p {:id (str "footnote-" ref)}
-                                      [:a {:href (str "#reference-" ref)} (str "[" label "]: ")]
-                                      (md/node->text node)]))]
+                                      (str "[" label "]: ")
+                                      (md/node->text node)
+                                      [:a {:href (str "#reference-" ref)} "⏎"]]))]
     (for [footnote (:footnotes ast)]
       (md/->hiccup renderers footnote))))
+
+(defn title [f]
+  (-> f
+      io/file
+      .getName
+      (string/replace #".html$" "")
+      (string/replace "-" " ")
+      (string/capitalize)))
 
 (defn recipe [f]
   (let [new-file (string/replace f #".md$" ".html")
         ast (-> f slurp md/parse)
         hiccup (list (ast->hiccup ast)
-                     [:hr {:class "mt-6"}]
-                     [:section (ast-footnotes->hiccup ast)])]
-    [new-file (page hiccup)]))
+                     [:section {:class ["mt-8"]} (ast-footnotes->hiccup ast)])]
+    [new-file (page (title f) hiccup)]))
 
 (defn recipes []
   (let [recipe-files (map #(str recipes-dir "/" %) (.list (io/file recipes-dir)))
         recipe-pages (map recipe recipe-files)
         recipe-list ["recipes/index.html"
-                     (page
-                      [:h1 "Recipes"]
-                      [:ul (for [[f _hiccup] recipe-pages
-                                 :let [title (-> f
-                                                 io/file
-                                                 .getName
-                                                 (string/replace #".html$" "")
-                                                 (string/replace "-" " ")
-                                                 (string/capitalize))]]
-                             [:li [:a {:href (str "/" f)} title]])])]]
+                     (page "Recipes"
+                           [:h1 "Recipes"]
+                           [:ul (for [[f _hiccup] recipe-pages]
+                                  [:li [:a {:href (str "/" f)} (title f)]])])]]
     (concat [recipe-list] recipe-pages)))
 
 (defn all-pages []
