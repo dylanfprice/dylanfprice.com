@@ -2,14 +2,14 @@
 
 ## Ingredients
 
-- 1/2 cup water
+- 1/4 cup water
 - 1/4 cup red miso
 - 1-inch piece ginger, peeled and minced
 - 2 cloves garlic
 - 2 tablespoons rice vinegar
 - 2 tablespoons tahini
 - 1 tablespoon brown sugar
-- 1/2 tablespoon chili paste (optional)
+- 1 teaspoon chili paste
 
 ## Directions
 
