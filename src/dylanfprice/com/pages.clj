@@ -25,7 +25,7 @@
     [:link {:rel "stylesheet" :href "/static/main.css"}]
     [:title title]]
    [:body {:class "p-2"}
-    [:header {:class ["max-w-3xl" "mx-auto" "mb-10"
+    [:header {:class ["max-w-3xl" "mx-auto" "mb-2" "md:mb-10"
                       "font-light" "text-lg"
                       "grid" "grid-flow-row" "md:grid-flow-col"]}
      (header-link {:href "/"} "dylanfprice.com")
