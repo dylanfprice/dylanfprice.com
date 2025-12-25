@@ -4,7 +4,7 @@
 
 - 1 tablespoon coconut oil
 - 1 yellow onion, diced
-- 2 tablespoons [Jerk Spices](./jerk-spices)
+- 2 tablespoons [Jerk Spices](/recipes/jerk-spices)
 - 1 14.5 oz can diced tomatoes with juice
 - 2 15 oz cans red kidney beans, drained and rinsed
 - 12 oz marinara sauce or 14.5 oz can tomato sauce
