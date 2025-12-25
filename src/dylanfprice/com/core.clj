@@ -24,7 +24,6 @@
 
 (defn build []
   (process/exec "rm" "-rf" public-dir)
-  (.mkdirs (io/file public-dir "recipes"))
   (run!
    (fn [[path, hiccup]]
      (let [path (str "public/" path)

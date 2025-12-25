@@ -65,20 +65,24 @@
       (string/capitalize)))
 
 (defn recipe [f]
-  (let [new-file (-> f (string/replace #".md$" "") (str "/index.html"))
+  (let [html-file (-> f (string/replace #".md$" "") (str "/index.html"))
         ast (-> f slurp md/parse)
         hiccup (list (ast->hiccup ast)
                      [:section {:class ["mt-8"]} (ast-footnotes->hiccup ast)])]
-    [new-file (page (title f) hiccup)]))
+    {:recipe-file f
+     :html-file html-file
+     :link (str "/" (string/replace html-file #"/index.html$" ""))
+     :hiccup (page (title f) hiccup)}))
 
 (defn recipes []
   (let [recipe-files (map #(str recipes-dir "/" %) (-> recipes-dir  io/file .list sort))
-        recipe-pages (map recipe recipe-files)
+        recipe-data (map recipe recipe-files)
+        recipe-pages (map (juxt :html-file :hiccup) recipe-data)
         recipe-list ["recipes/index.html"
                      (page "Recipes"
                            [:h1 "Recipes"]
-                           [:ul (for [[f _hiccup] recipe-pages]
-                                  [:li [:a {:href (str "/" f)} (title f)]])])]]
+                           [:ul (for [{:keys [link recipe-file]} recipe-data]
+                                  [:li [:a {:href link} (title recipe-file)]])])]]
     (concat [recipe-list] recipe-pages)))
 
 (defn all-pages []
