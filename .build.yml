@@ -34,3 +34,4 @@ tasks:
 - publish: |
     cd $site
     bin/dev build
+    bin/dev publish
