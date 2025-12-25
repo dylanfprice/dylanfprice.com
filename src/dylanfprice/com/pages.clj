@@ -60,12 +60,12 @@
   (-> f
       io/file
       .getName
-      (string/replace #"\.(html|md)$" "")
+      (string/replace #"\.(md)$" "")
       (string/replace "-" " ")
       (string/capitalize)))
 
 (defn recipe [f]
-  (let [new-file (string/replace f #".md$" ".html")
+  (let [new-file (string/replace f #".md$" "")
         ast (-> f slurp md/parse)
         hiccup (list (ast->hiccup ast)
                      [:section {:class ["mt-8"]} (ast-footnotes->hiccup ast)])]
