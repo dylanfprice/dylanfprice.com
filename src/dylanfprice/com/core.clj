@@ -26,8 +26,11 @@
   (process/exec "rm" "-rf" public-dir)
   (.mkdirs (io/file public-dir "recipes"))
   (run!
-   (fn [[path, hiccup]] (spit (str "public/" path)
-                              (str (h/html {:mode :html} (h/raw "<!DOCTYPE html>") hiccup))))
+   (fn [[path, hiccup]]
+     (let [path (str "public/" path)
+           html (str (h/html {:mode :html} (h/raw "<!DOCTYPE html>") hiccup))]
+       (.mkdirs (-> path io/file .getParentFile))
+       (spit path html)))
    (pages/all-pages))
   (process/exec {:err :pipe}
                 "tailwindcss"

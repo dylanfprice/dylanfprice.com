@@ -65,7 +65,7 @@
       (string/capitalize)))
 
 (defn recipe [f]
-  (let [new-file (string/replace f #".md$" "")
+  (let [new-file (-> f (string/replace #".md$" "") (str "/index.html"))
         ast (-> f slurp md/parse)
         hiccup (list (ast->hiccup ast)
                      [:section {:class ["mt-8"]} (ast-footnotes->hiccup ast)])]
