@@ -28,4 +28,8 @@
    (no pink).
 5. Optional: Simmer in marinara sauce and serve on top of pasta.
 
+## Attribution
+
+*Run Fast. Cook Fast. Eat Slow.* by Shalane Flanagan and Elyse Kopecky
+
 [^1]: To make oat flour, pulse oats in a blender or food processor.

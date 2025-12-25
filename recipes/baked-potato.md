@@ -18,3 +18,7 @@
 3. Let the potato cool for about 5 minutes, then cut a lengthwise slit in the middle. 
    Mash the exposed flesh with a fork. Sprinkle with a pinch of salt. Enjoy as is or 
    add your favorite toppings.
+
+## Attribution
+
+[*Martha Tinkler, Food Network*](https://www.foodnetwork.com/recipes/food-network-kitchen/perfect-baked-potatoes-20795077#recipeHead)

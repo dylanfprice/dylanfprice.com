@@ -16,3 +16,7 @@
 Puree all the ingredients in a mini blender until smooth. Serve as is or thin 
 with an additional 1/2 cup water and use as a marinade for tofu, tempeh, or 
 portabello mushroom caps.
+
+## Attribution
+
+*The No Meat Athlete Cookbook* by Matt Frazier and Stepfanie Romine

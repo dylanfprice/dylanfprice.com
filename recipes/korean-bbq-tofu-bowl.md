@@ -16,3 +16,7 @@
 
 Warm the grains, tofu, and sauce and transfer to a bowl. Top with the remaining 
 ingredients.
+
+## Attribution
+
+*The No Meat Athlete Cookbook* by Matt Frazier and Stepfanie Romine

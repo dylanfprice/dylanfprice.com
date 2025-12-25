@@ -17,3 +17,7 @@
 Combine all the ingredients in a resealable container. The sauce can be 
 refrigerated for up to 3 weeks, and it yields enough to marinate 4 blocks of 
 tempeh or tofu, or 16 portabello caps.
+
+## Attribution
+
+*The No Meat Athlete Cookbook* by Matt Frazier and Stepfanie Romine
