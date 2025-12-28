@@ -30,3 +30,7 @@
 5. Turn off the heat and stir in the vinegar and pepper. Taste and season with 
    more salt or vinegar, if needed. Garnish with basil, if desired.
 6. Serve on top of pasta with the tempeh.
+
+## Attribution
+
+*Run Fast. Cook Fast. Eat Slow.* by Shalane Flanagan and Elyse Kopecky
