@@ -19,9 +19,14 @@
 
 ## Directions
 
-1. Heat the broth and tempeh in a pan and simmer the tempeh for 10 minutes. Drain the tempeh and set aside.
-2. Meanwhile, heat the oil in a large heavy-bottomed pot over medium heat. Add the onion and salt and cook, stirring occasionally, until softened but not brown, about 5 minutes.
-3. Add the zucchini, eggplant, garlic, oregan, and thyme. Cook, stirring occasionally, until the veggies begin to soften, about 8 minutes.
-4. Add the tomatoes and bring to a simmer. Reduce heat, cover, and simmer for 20 minutes, stirring occasionally.
-5. Turn off the heat and stir in the vinegar and pepper. Taste and season with more salt or vinegar, if needed. Garnish with basil, if desired.
+1. Heat the broth and tempeh in a pan and simmer the tempeh for 10 minutes. 
+   Drain the tempeh and set aside.
+2. Meanwhile, heat the oil in a large heavy-bottomed pot over medium heat. Add 
+   the onion and salt and cook, stirring occasionally, until softened but not brown, about 5 minutes.
+3. Add the zucchini, eggplant, garlic, oregan, and thyme. Cook, stirring 
+   occasionally, until the veggies begin to soften, about 8 minutes.
+4. Add the tomatoes and bring to a simmer. Reduce heat, cover, and simmer for 
+   20 minutes, stirring occasionally.
+5. Turn off the heat and stir in the vinegar and pepper. Taste and season with 
+   more salt or vinegar, if needed. Garnish with basil, if desired.
 6. Serve on top of pasta with the tempeh.
