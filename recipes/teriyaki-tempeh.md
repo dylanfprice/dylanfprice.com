@@ -5,7 +5,7 @@
 - 8 oz tempeh, cubed
 - 1/2 head small cauliflower, chopped into small florets, about 2 heaping cups
 - 2 cups cubed acorn squash
-- 1 recipe teriyaki sauce
+- 1 recipe [teriyaki sauce](./teriyaki-sauce)
 - 2 teaspoons toasted sesame seeds
 - 2 tablespoons finely chopped scallions
 - red pepper flakes
