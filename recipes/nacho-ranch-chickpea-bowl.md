@@ -28,7 +28,7 @@
 - 1 tablespoon neutral oil
 - 4 cups baby greens
 - sliced cucumber or radish
-- 1 recipe [ranch dressing](./vegan-ranch-dressing), or store-bought
+- 1 recipe [ranch dressing](/recipes/vegan-ranch-dressing), or store-bought
 - 1/4 cup pepitas or hemp seeds
 
 ## Directions

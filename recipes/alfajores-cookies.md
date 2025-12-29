@@ -9,7 +9,7 @@
 - 1 cup butter, softened
 - 1/4 cup white sugar
 - 1 teaspoon vanilla extract
-- 1 cup [dulce de leche](./dulce-de-leche)
+- 1 cup [dulce de leche](/recipes/dulce-de-leche)
 
 ## Directions
 

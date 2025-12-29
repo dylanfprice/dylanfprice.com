@@ -15,7 +15,7 @@
 
 ### Enchilada Sauce
 
-[Red](./red-enchilada-sauce) or [Green](./green-enchilada-sauce)
+[Red](/recipes/red-enchilada-sauce) or [Green](/recipes/green-enchilada-sauce)
 
 ### Filling
 

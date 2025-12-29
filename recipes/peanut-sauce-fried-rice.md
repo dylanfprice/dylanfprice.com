@@ -9,7 +9,7 @@
 - 1 medium red bell pepper, thinly sliced
 - 14 oz firm tofu, drained, pressed, and cubed
 - 1 cup loosely packed chopped cabbage or broccoli
-- 1/2 recipe [peanut butter sauce](./peanut-butter-sauce)
+- 1/2 recipe [peanut butter sauce](/recipes/peanut-butter-sauce)
 - 3 cups cooked and cooled rice (or other grain of choice)
 - salt, to taste
 - red pepper flakes
