@@ -44,9 +44,7 @@
 ### Vegetables
 
 3. In a large bowl, combine the sweet potatoes, green beans, and oil. Toss the vegetables to coat them evenly. Add the nacho seasoning and toss to coat. Spread the vegetables on a large baking sheet lined with parchment paper. Salt the vegetables lightly.
-
 4. Bake the vegetables and chickpeas for 20 minutes. Stir the vegetables and chickpeas and bake for another 8 to 10 minutes, or until the vegetables are cooked to you preference.
-
 5. Assemble the bowls by layering the baby greens, a generous serving of the chickpeas and roasted vegetables, and cucumber. Drizzle each serving with the ranch dressing. Top the bowls with the pepitas and serve.
 
 ## Attribution
