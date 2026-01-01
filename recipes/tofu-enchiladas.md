@@ -27,9 +27,10 @@
 
 ### Assembly
 
-- 5 oz cheddar cheese, grated
-- 5 oz monterey jack cheese, grated
+- 7 oz cheddar cheese, grated
+- 7 oz monterey jack cheese, grated
 - 10 to 12 corn tortillas
+- sour cream (optional)
 
 ## Directions
 
@@ -61,8 +62,8 @@
    cheese blend evenly between two bowls--half will be for the filling, and half
    will go on top.
 3. Cover the bottom of the baking pan with half of the tortillas. Add the
-   filling and half of the cheese on top. Spread the rest of the tortillas over
-   the top.
+   filling, half of the cheese, and sour cream (if using). Spread the rest of
+   the tortillas over the top.
 4. Pour the remaining sauce over the top, moistening all the tortillas if
    possible. Top evenly with the remaining cheese, then bake until bubbly, 25 to
    30 minutes. Let rest for 5 minutes, then serve hot.
