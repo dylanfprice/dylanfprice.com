@@ -13,7 +13,7 @@
 ### Filling
 
 - 2-3 tablespoons olive oil
-- 1 large onion, thinly sliced
+- 1/2 onion, thinly sliced
 - 3 tablespoons pesto
 - 12 oz ripe tomatoes, thinly sliced
 - salt and black pepper
