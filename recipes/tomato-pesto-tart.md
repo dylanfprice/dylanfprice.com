@@ -15,7 +15,7 @@
 - 2-3 tablespoons olive oil
 - 1 large onion, thinly sliced
 - 3 tablespoons pesto
-- 1 lb 6 oz ripe tomatoes, thinly sliced
+- 12 oz ripe tomatoes, thinly sliced
 - salt and black pepper
 - a few fresh basil leaves, to garnish
 
