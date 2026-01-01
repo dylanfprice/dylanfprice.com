@@ -30,7 +30,7 @@
 - 7 oz cheddar cheese, grated
 - 7 oz monterey jack cheese, grated
 - 10 to 12 corn tortillas
-- sour cream (optional)
+- 1 cup sour cream (optional)
 
 ## Directions
 
