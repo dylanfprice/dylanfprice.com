@@ -13,7 +13,7 @@
 
 ### Filling
 
-- 1 jar pesto
+- 1 small jar pesto
 - 4 3/4 ounces broccoli florets, cut into bite-size pieces
 - 1/2 cup coarsely chopped sun-dried tomatoes
 - 1/2 cup coarsely chopped canned black olives
