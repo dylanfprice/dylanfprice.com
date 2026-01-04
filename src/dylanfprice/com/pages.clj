@@ -2,22 +2,16 @@
   (:require
    [clojure.java.io :as io]
    [clojure.string :as string]
-   [nextjournal.markdown :as md]))
-
-(comment
-  (require '[clojure.repl :as repl])
-  (repl/doc md/into-hiccup)
-  md/default-hiccup-renderers)
+   [dylanfprice.com.markdown :as dfp-md]))
 
 (def recipes-dir "recipes")
 
-(defn header-link [attrs & body]
+(defn- header-link [attrs & body]
   [:a
-   (merge {:class ["text-gray-600" "hover:text-blue-600"]}
-          attrs)
+   (merge {:class ["text-gray-600" "hover:text-blue-600"]} attrs)
    body])
 
-(defn page [title & content]
+(defn- page [title & content]
   [:html {:lang "en-US"}
    [:head
     [:meta {:charset "utf-8"}]
@@ -33,48 +27,17 @@
       (header-link {:href "/recipes"} "Recipes")]]
     [:main {:class ["max-w-3xl" "mt-2" "mx-auto"]} content]]])
 
-(defn home []
+(defn- home []
   ["index.html" (page "Home" "")])
 
-(defn ast->hiccup [ast]
-  (md/->hiccup
-   (assoc md/default-hiccup-renderers
-          :footnote-ref (fn [_ctx {:keys [label ref]}]
-                          [:sup [:a
-                                 {:id (str "reference-" ref)
-                                  :href (str "#footnote-" ref)}
-                                 label]]))
-   ast))
-
-(defn ast-footnotes->hiccup [ast]
-  (let [renderers (assoc md/default-hiccup-renderers
-                         :footnote (fn [_ctx {:keys [label ref] :as node}]
-                                     [:p {:id (str "footnote-" ref)}
-                                      (str "[" label "]: ")
-                                      (md/node->text node)
-                                      [:a {:href (str "#reference-" ref)} "↩"]]))]
-    (for [footnote (:footnotes ast)]
-      (md/->hiccup renderers footnote))))
-
-(defn title [f]
-  (-> f
-      io/file
-      .getName
-      (string/replace #"\.(md)$" "")
-      (string/replace "-" " ")
-      (string/capitalize)))
-
-(defn recipe [f]
-  (let [html-file (-> f (string/replace #".md$" "") (str "/index.html"))
-        ast (-> f slurp md/parse)
-        hiccup (list (ast->hiccup ast)
-                     [:section {:class ["mt-8"]} (ast-footnotes->hiccup ast)])]
+(defn- recipe [f]
+  (let [html-file (-> f (string/replace #".md$" "") (str "/index.html"))]
     {:recipe-file f
      :html-file html-file
      :link (str "/" (string/replace html-file #"/index.html$" ""))
-     :hiccup (page (title f) hiccup)}))
+     :hiccup (page (dfp-md/title f) (dfp-md/hiccup f))}))
 
-(defn recipes []
+(defn- recipes []
   (let [recipe-files (map #(str recipes-dir "/" %) (-> recipes-dir  io/file .list sort))
         recipe-data (map recipe recipe-files)
         recipe-pages (map (juxt :html-file :hiccup) recipe-data)
@@ -82,7 +45,7 @@
                      (page "Recipes"
                            [:h1 "Recipes"]
                            [:ul (for [{:keys [link recipe-file]} recipe-data]
-                                  [:li [:a {:href link} (title recipe-file)]])])]]
+                                  [:li [:a {:href link} (dfp-md/title recipe-file)]])])]]
     (concat [recipe-list] recipe-pages)))
 
 (defn all-pages []
