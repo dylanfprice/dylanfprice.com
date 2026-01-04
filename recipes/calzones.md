@@ -35,3 +35,7 @@
 2. Preheat the oven to 500°F. Sprinkle a few tablespoons of farina over a baking sheet, and spread it around with your hands.
 3. When the dough has risen, divide it into 4 equal portions. Roll each one out to a square about 1/8-inch thick and 6 to 8 inches on each side. Lay the squares with one of the corners facing you. Divide the filling equally between the four calzones, spooning it into the bottom half of each square, leaving a 1/2-inch space between the filling and the edge of the dough. Fold the top corner of the dough over the filling, creating a triangle shape with the filling completely enclosed inside. Starting at one end, roll and pinch the edges together to seal them closed.
 4. Gently life the calzones and transfer them to the prepared baking sheet, leaving at least 1 inch between each one. Brush the tops lightly with olive oil, then use a sharp knife to cut 2 to 3 small vents in the top middle of each calzone. Bake for 13 to 15 minutes, until golden brown and bubbly. Let rest for 10 minutes, then serve and enjoy!
+
+## Attribution
+
+*Husbands that Cook* by Ryan Alvarez and Adam Merrin
