@@ -6,7 +6,7 @@
 - 1 (2 1/2-inch) knob fresh ginger, peeled and coarsely chopped
 - 3 to 4 cloves garlic
 - 2 tablespoons soy sauce or coconut aminos
-- 1 tabelspoon fresh lime juice
+- 1 tablespoon fresh lime juice
 - zest of 1 lime
 - 2 teaspoons rice vinegar
 - 1 tablespoon sriracha sauce or Asian chile sauce, or more to taste
