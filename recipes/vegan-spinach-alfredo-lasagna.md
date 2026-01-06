@@ -6,6 +6,7 @@
 - 14 to 18 lasagna noodles
 - 1 cup tightly packed fresh spinach or 3/4 cup frozen spinach, thawed and squeezed
 - 1 recipe [cauliflower alfredo sauce](/recipes/cauliflower-alfredo-sauce) or 2 cups other alfredo sauce
+- ricotta, for cheaters
 - 1 large zucchini, thinly sliced or 6 oz mushrooms, thinly sliced
 - 1/2 teaspoon salt
 - black pepper, to taste

@@ -5,7 +5,7 @@
 - 2 tablespoons plus 1 teaspoon olive oil, divided
 - 3 cloves garlic, finely chopped
 - 3 heaping cups 1 1/2-inch cauliflower florets
-- 1/2 cupwater
+- 1/2 cup water
 - 1/2 teaspoon salt
 - 3/4 cup plain unsweetened nondairy milk
 - 1/2 teaspoon onion powder
