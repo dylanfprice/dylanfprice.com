@@ -43,7 +43,7 @@ In a shallow bowl, combine the breadcrumbs, salt, and nutritional yeast. Place e
 
 ### Couscous
 
-Combine the water, turmeric, garlic powder, garam masala, and salt in a medium saucepan over medium heat. When the water comes to a rolling boil, add the couscous, lemon juice, and peas and stir to combine. Cover the saucepan and cook for 1 minute. Take the saucepan off the heat and lt it sit for 10 minutes. Fluff the couscous. Add a generous helping of couscous to each serving bolw. Top with the cucumber and a drizzle of lemon juice.
+Combine the water, turmeric, garlic powder, garam masala, and salt in a medium saucepan over medium heat. When the water comes to a rolling boil, add the couscous, lemon juice, and peas and stir to combine. Cover the saucepan and cook for 1 minute. Take the saucepan off the heat and lt it sit for 10 minutes. Fluff the couscous. Add a generous helping of couscous to each serving bowl. Top with the cucumber and a drizzle of lemon juice.
 
 ## Attribution
 
