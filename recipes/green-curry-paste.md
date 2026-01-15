@@ -20,4 +20,8 @@
 
 ## Directions
 
-In a small blender or spice grinder, process the cumin, coriander, chiles, lemongrass, onion, garlic, galangal, cilantro, basil, pepper, soy sauce, lime juice, lime zest, sugar, and milk until well combined. Refrigerate the paste for up to 4 days or freeze it in 3 (r-tablespoon) portions for up to 1 month.
+In a small blender or spice grinder, process the cumin, coriander, chiles, lemongrass, onion, garlic, galangal, cilantro, basil, pepper, soy sauce, lime juice, lime zest, sugar, and milk until well combined. Refrigerate the paste for up to 4 days or freeze it in 3 (4-tablespoon) portions for up to 1 month.
+
+## Attribution
+
+*Vegan Richa's Everyday Kitchen* by Richa Hingle
