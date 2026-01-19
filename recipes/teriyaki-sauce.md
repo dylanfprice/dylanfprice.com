@@ -19,5 +19,5 @@
    dissolve the sugar and bring the mixture to a simmer, 3 to 4 minutes.
 2. Combine the cornstarch with the remaining 1/4 cup water and add the mixture
    to the saucepan. Fold in the sesame seeds (if using). Bring the sauce to a
-   boil to thicken, 3 to 4 minutes. Lt the sauce cool, and refrigerate it for up
+   boil to thicken, 3 to 4 minutes. Let the sauce cool, and refrigerate it for up
    to 1 week or freeze it for up to 1 month.
