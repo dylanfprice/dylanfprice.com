@@ -12,7 +12,7 @@
 - 1 teaspoon dried thyme
 - 1 can (28 oz) diced tomatoes
 - 2 8 oz packages tempeh, cubed
-- vegetable broth
+- 2 cups vegetable broth
 - 2 to 3 tablespoons balsamic vinegar
 - 1/4 teaspoon ground black pepper
 - torn fresh basil leaves (optional)
