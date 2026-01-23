@@ -1,6 +1,5 @@
 .cpcache/
-.clj-kondo/
-.lsp/
+.clj-kondo/.cache/
 .nrepl-port
 public/
 site.tar.gz
