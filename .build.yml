@@ -33,5 +33,6 @@ tasks:
     sudo chmod +x /usr/local/bin/tailwindcss
 - publish: |
     cd $site
+    bin/dev test
     bin/dev build
     bin/dev publish
