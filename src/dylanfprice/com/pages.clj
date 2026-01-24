@@ -2,7 +2,8 @@
   (:require
    [clojure.java.io :as io]
    [clojure.string :as string]
-   [dylanfprice.com.markdown :as dfp-md]))
+   [dylanfprice.com.markdown :as dfp-md]
+   [dylanfprice.com.meal-plans :refer [meal-plans]]))
 
 (def recipes-dir "recipes")
 
@@ -43,23 +44,35 @@
      :metadata (dfp-md/metadata content)
      :hiccup (page title hiccup)}))
 
+(defn- meal-plans-page []
+  ["recipes/meal-plans/index.html"
+   (page "Meal Plans"
+         [:h1 "Meal Plans"]
+         (for [[heading plans] meal-plans]
+           [:div
+            [:h2 heading]
+            [:ul
+             (for [plan plans
+                   :let [side (:side plan)]]
+               [:li (:entree plan) (when side (list " with " (:side plan)))])]]))])
+
 (defn- recipe-list-page [recipes]
   (let [recipes-by-category (group-by #(get-in % [:metadata :category]) recipes)]
     ["recipes/index.html"
      (page "Recipes"
            [:h1 "Recipes"]
-           (mapcat
-            (fn [[category recipes]]
-              [[:h2 (-> category name string/capitalize)]
-               [:ul (for [{:keys [link title]} recipes]
-                      [:li [:a {:href link} title]])]])
-            recipes-by-category))]))
+           [:a {:href "/recipes/meal-plans"} "Meal Plans"]
+           (for [[category recipes] recipes-by-category]
+             (list
+              [:h2 (-> category name string/capitalize)]
+              [:ul (for [{:keys [link title]} recipes]
+                     [:li [:a {:href link} title]])])))]))
 
 (defn- recipe-pages []
   (let [recipe-files (map #(str recipes-dir "/" %) (-> recipes-dir io/file .list sort))
         recipes (map recipe recipe-files)
         recipe-pages (map (juxt :html-file :hiccup) recipes)]
-    (conj recipe-pages (recipe-list-page recipes))))
+    (conj recipe-pages (recipe-list-page recipes) (meal-plans-page))))
 
 (defn all-pages []
   (conj (recipe-pages) (home-page)))
