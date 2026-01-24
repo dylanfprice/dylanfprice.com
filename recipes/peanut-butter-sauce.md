@@ -1,3 +1,7 @@
+```clojure
+{:category :seasoning}
+```
+
 # Peanut Butter Sauce
 
 ## Ingredients

@@ -1,3 +1,7 @@
+```clojure
+{:category :entree}
+```
+
 # Green Curry Chickpeas
 
 ## Ingredients

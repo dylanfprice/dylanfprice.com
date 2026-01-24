@@ -1,3 +1,7 @@
+```clojure
+{:category :entree}
+```
+
 # Meatballs
 
 ## Ingredients

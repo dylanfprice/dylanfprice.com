@@ -1,3 +1,7 @@
+```clojure
+{:category :seasoning}
+```
+
 # Vegan Ranch Dressing
 
 ## Ingredients

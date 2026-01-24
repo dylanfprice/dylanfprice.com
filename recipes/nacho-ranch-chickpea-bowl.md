@@ -1,3 +1,7 @@
+```clojure
+{:category :entree}
+```
+
 # Nacho Ranch Chickpea Bowl
 
 ## Ingredients

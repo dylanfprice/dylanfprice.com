@@ -1,3 +1,7 @@
+```clojure
+{:category :seasoning}
+```
+
 # Quick Italian Herb Blend
 
 ## Ingredients

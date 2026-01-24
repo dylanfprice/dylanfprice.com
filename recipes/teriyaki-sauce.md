@@ -1,3 +1,7 @@
+```clojure
+{:category :seasoning}
+```
+
 # Teriyaki Sauce
 
 ## Ingredients

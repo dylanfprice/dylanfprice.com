@@ -1,3 +1,7 @@
+```clojure
+{:category :seasoning}
+```
+
 # Dulce De Leche
 
 ## Ingredients

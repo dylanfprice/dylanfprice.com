@@ -1,3 +1,7 @@
+```clojure
+{:category :side}
+```
+
 # Bombay Potatoes
 
 ## Ingredients

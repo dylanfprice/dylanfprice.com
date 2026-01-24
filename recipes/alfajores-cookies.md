@@ -1,3 +1,7 @@
+```clojure
+{:category :dessert}
+```
+
 # Alfajores
 
 ## Ingredients

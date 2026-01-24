@@ -1,3 +1,7 @@
+```clojure
+{:category :seasoning}
+```
+
 # Cauliflower Alfredo Sauce
 
 ## Ingredients

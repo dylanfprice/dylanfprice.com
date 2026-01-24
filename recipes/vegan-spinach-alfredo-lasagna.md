@@ -1,3 +1,7 @@
+```clojure
+{:category :entree}
+```
+
 # Vegan Spinach-Alfredo Lasagna
 
 ## Ingredients

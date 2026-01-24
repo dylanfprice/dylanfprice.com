@@ -1,3 +1,7 @@
+```clojure
+{:category :dessert}
+```
+
 # Chocolate Chip Cookies
 
 ## Ingredients

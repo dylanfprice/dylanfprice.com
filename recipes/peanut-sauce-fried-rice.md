@@ -1,3 +1,7 @@
+```clojure
+{:category :entree}
+```
+
 # Peanut-Sauce Fried Rice
 
 ## Ingredients

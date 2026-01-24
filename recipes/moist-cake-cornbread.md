@@ -1,3 +1,7 @@
+```clojure
+{:category :side}
+```
+
 # Moist Cake Cornbread
 
 ## Ingredients

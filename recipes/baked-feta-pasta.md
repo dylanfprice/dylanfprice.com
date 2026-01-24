@@ -1,3 +1,7 @@
+```clojure
+{:category :entree}
+```
+
 # Baked Feta Pasta
 
 ## Ingredients

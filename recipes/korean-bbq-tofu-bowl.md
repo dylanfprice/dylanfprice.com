@@ -1,3 +1,7 @@
+```clojure
+{:category :entree}
+```
+
 # Korean BBQ Tofu Bowl
 
 ## Ingredients

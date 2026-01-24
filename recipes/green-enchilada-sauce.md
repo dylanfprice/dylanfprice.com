@@ -1,3 +1,7 @@
+```clojure
+{:category :seasoning}
+```
+
 # Green Enchilada Sauce
 
 ## Ingredients

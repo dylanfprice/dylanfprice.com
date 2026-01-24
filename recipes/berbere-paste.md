@@ -1,3 +1,7 @@
+```clojure
+{:category :seasoning}
+```
+
 # Berbere Paste
 
 Use whatever spices you have to make this paste, as there are enough spices to balance.

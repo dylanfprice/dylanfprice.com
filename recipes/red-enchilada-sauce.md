@@ -1,3 +1,7 @@
+```clojure
+{:category :seasoning}
+```
+
 # Red Enchilada Sauce
 
 ## Ingredients

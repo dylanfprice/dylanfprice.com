@@ -1,3 +1,7 @@
+```clojure
+{:category :entree}
+```
+
 # Tempeh Taco Meat
 
 ## Ingredients 

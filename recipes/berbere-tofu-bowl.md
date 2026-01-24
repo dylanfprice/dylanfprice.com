@@ -1,3 +1,7 @@
+```clojure
+{:category :entree}
+```
+
 # Berbere Tofu Bowl
 
 ## Ingredients

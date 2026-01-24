@@ -1,3 +1,7 @@
+```clojure
+{:category :seasoning}
+```
+
 # Korean Tahini BBQ Sauce
 
 ## Ingredients

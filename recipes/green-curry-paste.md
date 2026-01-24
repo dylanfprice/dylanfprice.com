@@ -1,3 +1,7 @@
+```clojure
+{:category :seasoning}
+```
+
 # Green Curry Paste
 
 ## Ingredients

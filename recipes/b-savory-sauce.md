@@ -1,3 +1,7 @@
+```clojure
+{:category :seasoning}
+```
+
 # B-Savory Sauce and Marinade
 
 ## Ingredients

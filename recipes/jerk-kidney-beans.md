@@ -1,3 +1,7 @@
+```clojure
+{:category :entree}
+```
+
 # Jerk Kidney Beans
 
 ## Ingredients

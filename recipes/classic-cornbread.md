@@ -1,3 +1,7 @@
+```clojure
+{:category :side}
+```
+
 # Classic Cornbread
 
 ## Ingredients
