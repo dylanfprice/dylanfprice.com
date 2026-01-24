@@ -1,6 +1,7 @@
 #!/usr/bin/env bb
 ; vi: ft=clojure
 
+#_{:clj-kondo/ignore [:namespace-name-mismatch]}
 (ns dev
   (:require [babashka.cli :as cli]
             [clojure.string :as string]
@@ -62,6 +63,9 @@
     :fn (fn [{:keys [opts]}]
           (if (:help opts) (println build-help) (core/build)))
     :spec build-spec}
+   {:cmds ["test"]
+    :desc "Run tests."
+    :fn (fn [_parse-args] (core/run-tests (rest *command-line-args*)))}
    {:cmds ["serve"]
     :desc "Start dev server."
     :fn (fn [{:keys [opts]}]

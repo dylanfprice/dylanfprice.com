@@ -1,5 +1,6 @@
-{:paths ["bin", "src"]
+{:paths ["bin" "src" "test"]
  :deps {hiccup/hiccup {:mvn/version "2.0.0"}
         io.github.nextjournal/markdown {:mvn/version "0.7.222"}
         org.babashka/cli {:mvn/version "0.8.67"}
-        org.babashka/http-server {:mvn/version "0.1.14"}}}
+        org.babashka/http-server {:mvn/version "0.1.14"}
+        lambdaisland/kaocha {:mvn/version "1.91.1392"}}}

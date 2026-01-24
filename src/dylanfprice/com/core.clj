@@ -3,8 +3,9 @@
    [babashka.http-server :as http-server]
    [clojure.java.io :as io]
    [clojure.java.process :as process]
+   [dylanfprice.com.pages :as pages]
    [hiccup2.core :as h]
-   [dylanfprice.com.pages :as pages]))
+   [kaocha.runner]))
 
 (def public-dir "public")
 
@@ -36,6 +37,9 @@
                 "--optimize"
                 "-i" "src/main.css"
                 "-o" "public/static/main.css"))
+
+(defn run-tests [args]
+  (apply kaocha.runner/-main args))
 
 (defn serve [{:keys [port]}]
   (http-server/serve {:dir public-dir :port port}))
