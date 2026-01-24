@@ -43,19 +43,23 @@
      :metadata (dfp-md/metadata content)
      :hiccup (page title hiccup)}))
 
+(defn- recipe-list-page [recipes]
+  (let [recipes-by-category (group-by #(get-in % [:metadata :category]) recipes)]
+    ["recipes/index.html"
+     (page "Recipes"
+           [:h1 "Recipes"]
+           (mapcat
+            (fn [[category recipes]]
+              [[:h2 (-> category name string/capitalize)]
+               [:ul (for [{:keys [link title]} recipes]
+                      [:li [:a {:href link} title]])]])
+            recipes-by-category))]))
+
 (defn- recipe-pages []
   (let [recipe-files (map #(str recipes-dir "/" %) (-> recipes-dir io/file .list sort))
-        recipe-data (map recipe recipe-files)
-        recipe-pages (map (juxt :html-file :hiccup) recipe-data)
-        recipes-by-category (group-by #(get-in % [:metadata :category]) recipe-data)
-        recipe-list ["recipes/index.html"
-                     (page "Recipes"
-                           [:h1 "Recipes"
-                            (for [[category recipes] recipes-by-category]
-                              [:h2 (-> category name string/capitalize)
-                               [:ul (for [{:keys [link title]} recipes]
-                                      [:li [:a {:href link} title]])]])])]]
-    (concat [recipe-list] recipe-pages)))
+        recipes (map recipe recipe-files)
+        recipe-pages (map (juxt :html-file :hiccup) recipes)]
+    (conj recipe-pages (recipe-list-page recipes))))
 
 (defn all-pages []
-  (concat [(home-page)] (recipe-pages)))
+  (conj (recipe-pages) (home-page)))
