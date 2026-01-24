@@ -1,7 +1,5 @@
 (ns dylanfprice.com.markdown
   (:require
-   [clojure.java.io :as io]
-   [clojure.string :as string]
    [nextjournal.markdown :as md]))
 
 (defn- ast->hiccup [ast]
@@ -24,16 +22,12 @@
     (for [footnote (:footnotes ast)]
       (md/->hiccup renderers footnote))))
 
-(defn hiccup [f]
-  (let [ast (-> f slurp md/parse)]
-    (list (ast->hiccup ast)
-          [:section {:class ["mt-8"]} (ast-footnotes->hiccup ast)])))
 
-(defn title [f]
-  (-> f
-      io/file
-      .getName
-      (string/replace #"\.(md)$" "")
-      (string/replace "-" " ")
-      (string/capitalize)))
 
+(defn hiccup [markdown-string]
+  (let [ast (md/parse markdown-string)
+        ast (if (metadata-node ast)
+              (assoc ast :content (-> ast :content rest vec))
+              ast)]
+    (concat (-> ast ast->hiccup rest)
+            (list [:section {:class ["mt-8"]} (ast-footnotes->hiccup ast)]))))
