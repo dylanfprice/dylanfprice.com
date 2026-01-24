@@ -27,7 +27,7 @@
       (header-link {:href "/recipes"} "Recipes")]]
     [:main {:class ["max-w-3xl" "mt-2" "mx-auto"]} content]]])
 
-(defn- home []
+(defn- home-page []
   ["index.html" (page "Home" "")])
 
 (defn- recipe [f]
@@ -43,16 +43,19 @@
      :metadata (dfp-md/metadata content)
      :hiccup (page title hiccup)}))
 
-(defn- recipes []
-  (let [recipe-files (map #(str recipes-dir "/" %) (-> recipes-dir  io/file .list sort))
+(defn- recipe-pages []
+  (let [recipe-files (map #(str recipes-dir "/" %) (-> recipes-dir io/file .list sort))
         recipe-data (map recipe recipe-files)
         recipe-pages (map (juxt :html-file :hiccup) recipe-data)
+        recipes-by-category (group-by #(get-in % [:metadata :category]) recipe-data)
         recipe-list ["recipes/index.html"
                      (page "Recipes"
-                           [:h1 "Recipes"]
-                           [:ul (for [{:keys [link title]} recipe-data]
-                                  [:li [:a {:href link} title]])])]]
+                           [:h1 "Recipes"
+                            (for [[category recipes] recipes-by-category]
+                              [:h2 (-> category name string/capitalize)
+                               [:ul (for [{:keys [link title]} recipes]
+                                      [:li [:a {:href link} title]])]])])]]
     (concat [recipe-list] recipe-pages)))
 
 (defn all-pages []
-  (concat [(home)] (recipes)))
+  (concat [(home-page)] (recipe-pages)))
