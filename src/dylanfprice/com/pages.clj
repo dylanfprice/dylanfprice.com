@@ -40,6 +40,7 @@
      :html-file html-file
      :link (str "/" (string/replace html-file #"/index.html$" ""))
      :title title
+     :metadata (dfp-md/metadata content)
      :hiccup (page title hiccup)}))
 
 (defn- recipes []

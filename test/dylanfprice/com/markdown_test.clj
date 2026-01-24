@@ -4,6 +4,29 @@
    [clojure.test :refer :all]
    [dylanfprice.com.markdown :as test-ns]))
 
+(deftest metadata
+  (testing "returns metadata for markdown string whose first node is a clojure code block"
+    (let [md (->> ["```clojure"
+                   "{:key \"val\"}"
+                   "```"
+                   ""
+                   "# Title"]
+                  (string/join "\n"))]
+      (is (= {:key "val"}
+             (test-ns/metadata md)))))
+  (testing "doesn't return metadata for markdown string with non clojure code block"
+    (let [md (->> ["```"
+                   "{:key \"val\"}"
+                   "```"
+                   ""
+                   "# Title"]
+                  (string/join "\n"))]
+      (is (nil? (test-ns/metadata md)))))
+  (testing "doesn't return metadata for markdown string with no code block"
+    (let [md (->> ["# Title"]
+                  (string/join "\n"))]
+      (is (nil? (test-ns/metadata md))))))
+
 (deftest hiccup
   (testing "return hiccup for simple markdown string"
     (let [md (->> ["# Title"
