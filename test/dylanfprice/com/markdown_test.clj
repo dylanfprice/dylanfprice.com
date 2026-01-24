@@ -55,4 +55,14 @@
                   "[1]: "
                   "A footnote!"
                   [:a {:href "#reference-0"} "↩"]])])
+             (test-ns/hiccup md)))))
+  (testing "return hiccup without metadata for markdown with metadata"
+    (let [md (->> ["```clojure"
+                   "{:key \"val\"}"
+                   "```"
+                   ""
+                   "# Title"]
+                  (string/join "\n"))]
+      (is (= '([:h1 {:id "title"} "Title"]
+               [:section {:class ["mt-8"]} []])
              (test-ns/hiccup md))))))

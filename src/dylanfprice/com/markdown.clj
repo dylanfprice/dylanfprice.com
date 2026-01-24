@@ -36,6 +36,9 @@
       (-> node :content first :text edn/read-string))))
 
 (defn hiccup [markdown-string]
-  (let [ast (md/parse markdown-string)]
+  (let [ast (md/parse markdown-string)
+        ast (if (metadata-node ast)
+              (assoc ast :content (-> ast :content rest vec))
+              ast)]
     (concat (-> ast ast->hiccup rest)
             (list [:section {:class ["mt-8"]} (ast-footnotes->hiccup ast)]))))
