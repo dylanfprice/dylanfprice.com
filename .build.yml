@@ -16,6 +16,10 @@ environment:
   site: dylanfprice.com
   bb_release: 1.12.213
   tw_release: 4.0.0
+triggers:
+  - action: email
+    condition: failure
+    to: Dylan Price <mail@dylanfprice.com>
 tasks:
 - install-bb: |
     curl --remote-name\
