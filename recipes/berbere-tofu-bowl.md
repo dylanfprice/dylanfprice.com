@@ -33,7 +33,7 @@
 - 2 cups couscous
 - 1 teaspoon fresh lemon juice, plus more for garnish
 - 1 cup fresh or thawed frozen greeen peas
-- 2 cup chpped cucumber or tomatoes
+- 2 cup chopped cucumber or tomatoes
 
 ## Directions
 
