@@ -35,7 +35,3 @@ Use whatever spices you have to make this paste, as there are enough spices to b
 ## Attribution
 
 *Vegan Richa's Everyday Kitchen* by Richa Hingle
-
-## Attribution
-
-*Vegan Richa's Everyday Kitchen* by Richa Hingle
