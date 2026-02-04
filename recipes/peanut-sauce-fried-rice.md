@@ -9,7 +9,7 @@
 - 2 teaspoons neutral oil
 - 1/2 medium red onion, thinly sliced
 - 4 cloves garlic, finely chopped
-- 3/4 cup thinly cliced carrots
+- 3/4 cup thinly sliced carrots
 - 1 medium red bell pepper, thinly sliced
 - 14 oz firm tofu, drained, pressed, and cubed
 - 1 cup loosely packed chopped cabbage or broccoli
