@@ -6,7 +6,7 @@
      :side "Salad"}
     {:entree [:a {:href "/recipes/meatballs"} "Meatballs"]
      :side "Spaghetti and Sauce"}
-    {:entree [:a {:href "/recipes/tempeh-taco-meat"} "Tempeh Tacos"]
+    {:entree [:a {:href "/recipes/mushroom-goat-cheese-quesadillas"} "Mushroom and Goat Cheese Quesadillas"]
      :side "Tortillas"}
     {:entree [:a {:href "/recipes/green-curry-chickpeas"} "Green Curry Chickpeas"]
      :side "Rice"}
