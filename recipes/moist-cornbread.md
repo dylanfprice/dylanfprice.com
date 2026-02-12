@@ -2,7 +2,7 @@
 {:category :side}
 ```
 
-# Moist Cake Cornbread
+# Moist Cornbread
 
 ## Ingredients
 
