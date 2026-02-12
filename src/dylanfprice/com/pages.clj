@@ -54,7 +54,7 @@
             [:ul
              (for [plan plans
                    :let [side (:side plan)]]
-               [:li (:entree plan) (when side (list " with " (:side plan)))])]]))])
+               [:li (:main plan) (when side (list " with " (:side plan)))])]]))])
 
 (defn- recipe-list-page [recipes]
   (let [recipes-by-category (group-by #(get-in % [:metadata :category]) recipes)]

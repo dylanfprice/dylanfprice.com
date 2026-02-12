@@ -1,5 +1,5 @@
 ```clojure
-{:category :entree}
+{:category :main}
 ```
 
 # Tomato Pesto Tart

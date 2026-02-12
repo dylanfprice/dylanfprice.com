@@ -1,5 +1,5 @@
 ```clojure
-{:category :entree}
+{:category :main}
 ```
 
 # Vegan Spinach-Alfredo Lasagna

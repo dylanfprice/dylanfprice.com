@@ -1,5 +1,5 @@
 ```clojure
-{:category :entree}
+{:category :main}
 ```
 
 # Mushroom and Goat Cheese Quesadillas

@@ -1,5 +1,5 @@
 ```clojure
-{:category :entree}
+{:category :main}
 ```
 
 # Green Curry Chickpeas

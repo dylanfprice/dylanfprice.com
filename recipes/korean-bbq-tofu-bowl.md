@@ -1,5 +1,5 @@
 ```clojure
-{:category :entree}
+{:category :main}
 ```
 
 # Korean BBQ Tofu Bowl
