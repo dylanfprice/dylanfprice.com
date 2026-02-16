@@ -3,4 +3,6 @@
         io.github.nextjournal/markdown {:mvn/version "0.7.222"}
         org.babashka/cli {:mvn/version "0.8.67"}
         org.babashka/http-server {:mvn/version "0.1.14"}
-        lambdaisland/kaocha {:mvn/version "1.91.1392"}}}
+        lambdaisland/kaocha {:mvn/version "1.91.1392"}
+        dylanfprice/clj-cli {:git/url "https://git.sr.ht/~dylanfprice/clj-cli"
+                             :git/sha "ed605ce8b941f1fb8e4423429108a1b58fe42ceb"}}}

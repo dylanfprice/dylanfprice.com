@@ -3,112 +3,33 @@
 
 #_{:clj-kondo/ignore [:namespace-name-mismatch]}
 (ns dev
-  (:require [babashka.cli :as cli]
-            [clojure.string :as string]
-            [dylanfprice.com.core :as core]))
+  (:require
+   [dylanfprice.clj-cli.core :refer [subcmd-main]]
+   [dylanfprice.com.core :as core]))
 
-(comment
-  (require '[clojure.repl :as repl])
-  (repl/dir string/join)
-  (repl/doc string/join))
-
-(def help-spec
-  {:help {:alias :h
-          :coerce :boolean}})
-
-(def build-spec help-spec)
-
-(def serve-spec
-  (merge
-   help-spec
-   {:port {:desc "Port number."
-           :alias :p
-           :coerce :int
-           :default 8000}}))
-
-(def publish-spec help-spec)
-
-(def build-help
-  (->> ["Usage:"
-        "  dev build [option]"
-        ""
-        "Options:"
-        (cli/format-opts {:spec build-spec})]
-       (string/join "\n")))
-
-(def serve-help
-  (->> ["Usage:"
-        "  dev serve [option]"
-        ""
-        "Options:"
-        (cli/format-opts {:spec serve-spec})]
-       (string/join "\n")))
-
-(def publish-help
-  (->> ["Usage:"
-        "  dev publish [option]"
-        ""
-        "Options:"
-        (cli/format-opts {:spec publish-spec})]
-       (string/join "\n")))
-
-(declare help)
-
-(def command-table
+(def subcmd-table
   [{:cmds ["terraform"]
     :desc "Use terraform to provision dns etc."
+    :add-help false
     :fn (fn [_parse-args] (core/terraform (rest *command-line-args*)))}
    {:cmds ["build"]
     :desc "Build site."
-    :fn (fn [{:keys [opts]}]
-          (if (:help opts) (println build-help) (core/build)))
-    :spec build-spec}
+    :fn (fn [_parse-args] (core/build))}
    {:cmds ["test"]
     :desc "Run tests."
     :fn (fn [_parse-args] (core/run-tests (rest *command-line-args*)))}
    {:cmds ["serve"]
     :desc "Start dev server."
-    :fn (fn [{:keys [opts]}]
-          (if (:help opts) (println serve-help) (core/serve opts)))
-    :spec serve-spec}
+    :fn (fn [{:keys [opts]}] (core/serve opts))
+    :spec {:port {:desc "Port number."
+                  :alias :p
+                  :coerce :int
+                  :default 8000}}}
    {:cmds ["publish"]
     :desc "Publish site."
-    :fn (fn [{:keys [opts]}]
-          (if (:help opts) (println publish-help) (core/publish)))
-    :spec publish-spec}
-   {:cmds []
-    :fn (fn [_parse-args] (println (help)))
-    :spec help-spec}])
-
-(defn help []
-  (let [cmd-help (eduction
-                  (map (juxt (comp first :cmds) :desc))
-                  (filter first)
-                  (map #(apply format "  %-15s %s" %))
-                  command-table)]
-    (->> (concat
-          ["Usage:"
-           (str "  dev [option] [command] ...")
-           ""
-           "Options:"
-           (cli/format-opts {:spec help-spec})
-           ""
-           "Commands:"]
-          cmd-help)
-         (string/join "\n"))))
-
-(defn error [{:keys [spec type cause msg option] :as data}]
-  (if (= :org.babashka/cli type)
-    (case cause
-      :require
-      (println
-       (format "Missing required argument:\n%s"
-               (cli/format-opts {:spec (select-keys spec [option])})))
-      (println msg))
-    (throw (ex-info msg data)))
-  (System/exit 1))
+    :fn (fn [_parse-args] (core/publish))}])
 
 (defn -main [args]
-  (cli/dispatch command-table args {:error-fn error}))
+  (subcmd-main "dev" subcmd-table args))
 
 (-main *command-line-args*)
