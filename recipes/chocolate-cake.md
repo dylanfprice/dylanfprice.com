@@ -4,7 +4,7 @@
 
 # Chocolate Cake
 
-Bake as a 9-inch round layer cake, a 9x13 cake, two dozen cupcakes, a Bundt
+Bake as two 9-inch round layer cakes, a 9x13 cake, two dozen cupcakes, a Bundt
 cake, or a sheet cake. Pair with [chocolate
 frosting](/recipes/chocolate-frosting), [cream cheese frosting](/recipes/cream-cheese-frosting), or [peanut butter frosting](/recipes/peanut-butter-frosting).
 
