@@ -8,11 +8,12 @@
 
 - 3 tablespoons olive oil
 - 3 tablespoons all-purpose flour
-- 6 tablespoons chili powder
+- 3 tablespoons chili powder
+- 1 tablespoon paprika
+- 1 tablespoon ground cumin
+- 1 tablespoon dried oregano
 - 3/4 teaspoon garlic powder
 - 3/4 teaspoon salt
-- 1/2 teaspoon ground cumin
-- 1/2 teaspoon dried oregano
 - 3 cups vegetable broth
 
 ## Instructions
