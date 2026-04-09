@@ -1,5 +1,5 @@
 ```clojure
-{:category :seasoning}
+{:category :dessert}
 ```
 
 # Dulce De Leche
