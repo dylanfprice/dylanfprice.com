@@ -22,10 +22,10 @@
 ## Directions
 
 1. Boil the lasagna noodles in a large pot of water.
-2. Preheat the oven to 400°F. Spread 3/4 cup of the marinara sauce in the bottom of a 9x13-inch baking pan, then add lasagna noodles in a single layer to cover the marinara. Add a thin layer of spinach on the noodles, then drizzle 3/4 cup of the cauliflower alfredo all over the spinach. 
+2. Preheat the oven to 400°F. Spread 3/4 cup of the marinara sauce in the bottom of a 9x13-inch baking pan, then add lasagna noodles in a single layer to cover the marinara. Add a thin layer of spinach on the noodles, then drizzle 3/4 cup of the cauliflower alfredo all over the spinach. Spoon some ricotta on top, if using.
 3. Add another layer of noodles, then spread 3/4 cup marinara sauce on them. Arrange the zucchini over the marinara. Season with the salt and pepper.
-4. Add another layer of noodles and spread 3/4 cup cauliflower alfredo sauce evenly over them. Arrange the olives on the cauliflower alfredo. Sprinkle the nutritional yeast on the olives.
-5. Add another layer of noodles. Add about 1 to 1 1/2 cups marinara sauce on the top layer. Drizzle some cauliflower alfredo on the marinara. Sprinkle some more nutritional yeast on the marinara. Sprinkle the top of the lasagna with the red pepper flakes, quick italian herb blend, and some additional salt.
+4. Add another layer of noodles and spread 3/4 cup cauliflower alfredo sauce evenly over them. Spoon ricotta on, if using. Arrange the olives on the cauliflower alfredo. Sprinkle the nutritional yeast on the olives.
+5. Add another layer of noodles. Add about 1 to 1 1/2 cups marinara sauce on the top layer. Drizzle some cauliflower alfredo (and ricotta if using) on the marinara. Sprinkle some more nutritional yeast on the marinara. Sprinkle the top of the lasagna with the red pepper flakes, quick italian herb blend, and some additional salt.
 6. Cover the pan with a baking sheet and bake for 50 minutes. Let the lasagna cool slightly, slice, and serve hot. Refrigerate the lasagna for up to 3 days. Slice and freeze for up to 1 month.
 
 ## Attribution
