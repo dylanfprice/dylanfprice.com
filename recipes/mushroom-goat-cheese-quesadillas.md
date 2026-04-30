@@ -7,7 +7,7 @@
 ## Ingredients
 
 - 1 tablespoon olive oil
-- 1 pound cremini mushrooms
+- 1 pound cremini mushrooms, sliced
 - 1 medium onion, chopped
 - 3 or 4 garlic cloves, finely minced
 - 8 ounces spinach leaves
