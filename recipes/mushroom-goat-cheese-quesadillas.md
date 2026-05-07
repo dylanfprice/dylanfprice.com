@@ -11,7 +11,7 @@
 - 1 medium onion, chopped
 - 3 or 4 garlic cloves, finely minced
 - 8 ounces spinach leaves
-- 1 1/2 tablespoon favorite barbecue rub
+- 1 1/2 tablespoon [bbq spice rub](/recipes/bbq-spice-rub)
 - 5 ounces plain goat cheese, crumbled
 - 4 large (10-inch) tortillas
 
