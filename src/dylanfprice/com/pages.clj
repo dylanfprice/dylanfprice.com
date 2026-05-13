@@ -31,14 +31,13 @@
 (defn- home-page []
   ["index.html" (page "Home" "")])
 
-(defn- recipe [f]
+(defn- page-data [f]
   (let [html-file (-> f (string/replace #".md$" "") (str "/index.html"))
         content (slurp f)
         hiccup (dfp-md/hiccup content)
               ; [[:h1 {:id "title"} "Title"] ...]
         title (-> hiccup first (nthrest 2))]
-    {:recipe-file f
-     :html-file html-file
+    {:html-file html-file
      :link (str "/" (string/replace html-file #"/index.html$" ""))
      :title title
      :metadata (dfp-md/metadata content)
@@ -70,7 +69,7 @@
 
 (defn- recipe-pages []
   (let [recipe-files (map #(str recipes-dir "/" %) (-> recipes-dir io/file .list sort))
-        recipes (map recipe recipe-files)
+        recipes (map page-data recipe-files)
         recipe-pages (map (juxt :html-file :hiccup) recipes)]
     (conj recipe-pages (recipe-list-page recipes) (meal-plans-page))))
 
