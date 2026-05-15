@@ -23,8 +23,10 @@
      :side "Rice or Quinoa"}
     {:main [:a {:href "/recipes/jerk-kidney-beans"} "Jerk Kidney Beans"]
      :side [:span "Nachos or " [:a {:href "/recipes/classic-cornbread"} "Classic Cornbread"]]}
-    {:main [:a {:href "/recipes/tempeh-ratatouille"} "Tempeh Ratatouille"]
-     :side "Pasta"}
+    {:main [:a {:href "/recipes/southern-fried-tempeh"} "Southern Fried Tempeh"]
+     :side [:span
+            [:a {:href "/recipes/smashed-potatoes"} "Smashed Potatoes"]
+            " and Salad"]}
     {:main [:a {:href "/recipes/tofu-enchiladas"} "Enchiladas"]
      :side [:span
             [:a {:href "/recipes/red-enchilada-sauce"} "Red Sauce"]
