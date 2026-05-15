@@ -6,8 +6,10 @@
      :side "Salad"}
     {:main [:a {:href "/recipes/meatballs"} "Meatballs"]
      :side "Spaghetti and Sauce"}
-    {:main [:a {:href "/recipes/mushroom-goat-cheese-quesadillas"} "Mushroom and Goat Cheese Quesadillas"]
-     :side "Tortillas"}
+    {:main [:a {:href "/recipes/southern-fried-tempeh"} "Southern Fried Tempeh"]
+     :side [:span
+            [:a {:href "/recipes/smashed-potatoes"} "Smashed Potatoes"]
+            " and Salad"]}
     {:main [:a {:href "/recipes/green-curry-chickpeas"} "Green Curry Chickpeas"]
      :side "Rice"}
     {:main [:a {:href "/recipes/risotto"} "Risotto"]
@@ -23,10 +25,8 @@
      :side "Rice or Quinoa"}
     {:main [:a {:href "/recipes/jerk-kidney-beans"} "Jerk Kidney Beans"]
      :side [:span "Nachos or " [:a {:href "/recipes/classic-cornbread"} "Classic Cornbread"]]}
-    {:main [:a {:href "/recipes/southern-fried-tempeh"} "Southern Fried Tempeh"]
-     :side [:span
-            [:a {:href "/recipes/smashed-potatoes"} "Smashed Potatoes"]
-            " and Salad"]}
+    {:main [:a {:href "/recipes/mushroom-goat-cheese-quesadillas"} "Mushroom and Goat Cheese Quesadillas"]
+     :side "Tortillas"}
     {:main [:a {:href "/recipes/tofu-enchiladas"} "Enchiladas"]
      :side [:span
             [:a {:href "/recipes/red-enchilada-sauce"} "Red Sauce"]
