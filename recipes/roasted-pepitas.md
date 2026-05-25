@@ -40,7 +40,7 @@
 2. In a large bowl: combine the pepitas, oil or butter, sweetener (if using)
    and seasonings of your choice. Mix together until well combined.
 3. Spread the coated pepitas across the baking sheet in a single layer.
-4. Place in the middle of the oven and bake for 10-12 minutes. About halfway
+4. Place in the middle of the oven and bake for 12-18 minutes. About halfway
    through the cook time, take out the baking pan and stir the pepitas to
    ensure the seeds evenly cook.
 5. Let cool on the baking tray about 5 minutes. Roasted pepitas with added
