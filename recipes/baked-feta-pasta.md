@@ -8,7 +8,7 @@
 
 - 1 shallot, quartered
 - 3 garlic cloves, smashed 
-- 2 pt. cherry or grape tomatoes
+- 32 oz cherry or grape tomatoes
 - 1/2 cup extra-virgin olive oil, divided
 - Kosher salt
 - Pinch of crushed red pepper flakes
