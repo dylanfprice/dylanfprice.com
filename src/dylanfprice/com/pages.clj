@@ -6,6 +6,7 @@
    [dylanfprice.com.meal-plans :refer [meal-plans]]))
 
 (def recipes-dir "recipes")
+(def quotes-dir "quotes")
 
 (defn- header-link [attrs & body]
   [:a
@@ -31,17 +32,16 @@
 (defn- home-page []
   ["index.html" (page "Home" "")])
 
-(defn- page-data [f]
-  (let [html-file (-> f (string/replace #".md$" "") (str "/index.html"))
-        content (slurp f)
-        hiccup (dfp-md/hiccup content)
-              ; [[:h1 {:id "title"} "Title"] ...]
-        title (-> hiccup first (nthrest 2))]
+(defn- page-data
+  "Return map of page data for given markdown file."
+  [file]
+  (let [html-file (-> file (string/replace #".md$" "") (str "/index.html"))
+        content (slurp file)]
     {:html-file html-file
+     :file-name (-> file (string/split #"/") last (string/replace #".md$" ""))
      :link (str "/" (string/replace html-file #"/index.html$" ""))
-     :title title
-     :metadata (dfp-md/metadata content)
-     :hiccup (page title hiccup)}))
+     :hiccup (dfp-md/hiccup content)
+     :metadata (dfp-md/metadata content)}))
 
 (defn- meal-plans-page []
   ["recipes/meal-plans/index.html"
@@ -67,11 +67,58 @@
               [:ul (for [{:keys [link title]} recipes]
                      [:li [:a {:href link} title]])])))]))
 
+(defn- recipe-title [hiccup]
+  ; [[:h1 {:id "title"} "Title"] ...]
+  (-> hiccup first (nthrest 2)))
+
 (defn- recipe-pages []
   (let [recipe-files (map #(str recipes-dir "/" %) (-> recipes-dir io/file .list sort))
-        recipes (map page-data recipe-files)
+        make-page (fn [{:keys [title hiccup]}] (page title hiccup))
+        recipes (eduction
+                 (map page-data)
+                 (map #(assoc % :title (-> % :hiccup recipe-title)))
+                 (map #(assoc % :hiccup (make-page %)))
+                 recipe-files)
         recipe-pages (map (juxt :html-file :hiccup) recipes)]
     (conj recipe-pages (recipe-list-page recipes) (meal-plans-page))))
 
+(defn- quote-list-page [quotes]
+  (let [quotes-by-author (->> quotes
+                              (group-by #(get-in % [:metadata :author]))
+                              sort)]
+    ["quotes/index.html"
+     (page "Quotes"
+           [:h1 "Quotes"]
+           (for [[author quotes] quotes-by-author]
+             (list
+              [:h2 (-> author name)]
+              [:ul (for [{:keys [link title]} quotes]
+                     [:li [:a {:href link} title]])])))]))
+
+(defn- quote-title [file-name]
+  (-> file-name
+      (string/capitalize)
+      (string/replace "-" " ")
+      (str "...")))
+
+(defn- add-author [{:keys [metadata hiccup]}]
+  (apply list
+         (first hiccup)
+         [:p.mt-4 "— " (:author metadata)]
+         (rest hiccup)))
+
+(defn- quote-pages []
+  (let [quote-files (map #(str quotes-dir "/" %) (-> quotes-dir io/file .list sort))
+        make-page (fn [{:keys [title hiccup]}] (page title hiccup))
+        quotes (eduction
+                (map page-data)
+                (map #(assoc % :title (-> % :file-name quote-title)))
+                (map #(assoc % :hiccup (add-author %)))
+                (map #(assoc % :hiccup (make-page %)))
+                quote-files)
+        quote-pages (map (juxt :html-file :hiccup) quotes)]
+    (conj quote-pages (quote-list-page quotes))))
+
 (defn all-pages []
-  (conj (recipe-pages) (home-page)))
+  (cons (home-page)
+        (concat (recipe-pages) (quote-pages))))
