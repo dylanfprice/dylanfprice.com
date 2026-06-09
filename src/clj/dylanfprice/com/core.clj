@@ -4,7 +4,6 @@
    [clojure.java.io :as io]
    [clojure.java.process :as process]
    [dylanfprice.com.pages :as pages]
-   [hiccup2.core :as h]
    [kaocha.runner]))
 
 (def public-dir "public")
@@ -26,11 +25,10 @@
 (defn build []
   (process/exec "rm" "-rf" public-dir)
   (run!
-   (fn [[path, hiccup]]
-     (let [path (str "public/" path)
-           html (str (h/html {:mode :html} (h/raw "<!DOCTYPE html>") hiccup))]
+   (fn [[dest, contents]]
+     (let [path (str "public/" dest)]
        (.mkdirs (-> path io/file .getParentFile))
-       (spit path html)))
+       (spit path contents)))
    (pages/all-pages))
   (process/exec {:err :pipe}
                 "tailwindcss"
