@@ -26,8 +26,8 @@
 3. Use a spoon to scoop and your hands to form the meat into golf-ball sizes,
    about 16 total meatballs. Place the meatballs evenly spaced on the prepared 
    baking sheet.
-4. Bake in the center of the oven for 15 minutes. Remove from the oven, flip
-   each meatball, and return to the oven for 15 minutes, or until the meatballs 
+4. Bake in the center of the oven for 8 minutes. Remove from the oven, flip
+   each meatball, and return to the oven for 8 minutes, or until the meatballs 
    are crispy and lightly browned. Cut open a meatball to check for doneness 
    (no pink).
 5. Optional: Simmer in marinara sauce and serve on top of pasta.
