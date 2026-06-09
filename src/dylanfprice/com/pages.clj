@@ -18,7 +18,7 @@
    [:head
     [:meta {:charset "utf-8"}]
     [:meta {:name "viewport" :content "width=device-width"}]
-    [:link {:rel "stylesheet" :href "/static/main.css"}]
+    [:link {:rel "stylesheet" :href "/static/css/main.css"}]
     [:title title]]
    [:body {:class "p-2"}
     [:header {:class ["max-w-3xl" "mx-auto" "mb-2" "md:mb-10"

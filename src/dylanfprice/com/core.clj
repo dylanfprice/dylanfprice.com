@@ -35,8 +35,8 @@
   (process/exec {:err :pipe}
                 "tailwindcss"
                 "--optimize"
-                "-i" "src/main.css"
-                "-o" "public/static/main.css"))
+                "-i" "src/css/main.css"
+                "-o" "public/static/css/main.css"))
 
 (defn run-tests [args]
   (apply kaocha.runner/-main args))
