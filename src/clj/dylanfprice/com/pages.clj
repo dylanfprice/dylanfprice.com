@@ -34,7 +34,7 @@
   (str (h/html {:mode :html} (h/raw "<!DOCTYPE html>") hiccup)))
 
 (defn- home-page []
-  ["index.html" (page "Home" "")])
+  ["index.html" (html (page "Home" ""))])
 
 (defn- page-data
   "Return map of page data for given markdown file."
