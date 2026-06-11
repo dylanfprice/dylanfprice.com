@@ -28,8 +28,8 @@
                       "grid" "grid-flow-row" "md:grid-flow-col"]}
      (header-link {:href "/"} "dylanfprice.com")
      [:nav {:class ["grid" "grid-flow-col" "gap-4" "justify-center" "md:justify-end"]}
-      (header-link {:href "/quote-of-the-day"} "Quote")
-      (header-link {:href "/recipes"} "Recipes")]]
+      (header-link {:href "/quote-of-the-day/"} "Quote")
+      (header-link {:href "/recipes/"} "Recipes")]]
     [:main {:class ["max-w-3xl" "mt-2" "mx-auto"]} content]]])
 
 (defn html [hiccup]
@@ -45,7 +45,7 @@
         content (slurp file)]
     {:file-name (-> file (string/split #"/") last (string/replace #".md$" ""))
      :dest html-file
-     :link (str "/" (string/replace html-file #"/index.html$" ""))
+     :link (str "/" (string/replace html-file #"index.html$" ""))
      :hiccup (dfp-md/hiccup content)
      :metadata (dfp-md/metadata content)}))
 
