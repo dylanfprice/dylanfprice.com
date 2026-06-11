@@ -96,13 +96,16 @@
    (html
     (page (list [:title "Loading..."]
                 [:script {:type "application/javascript"
+                          :defer true
                           :src "/js/scittle-0.8.31.js"}]
-                [:script {:type "application/x-scittle"}
+                [:script {:type "application/x-scittle"
+                          :defer true}
                  (->> ["(ns dylanfprice.com.quotes)"
                        (str "(def quotes " (mapv :link quotes) ")")]
                       (string/join "\n")
                       h/raw)]
                 [:script {:type "application/x-scittle"
+                          :defer true
                           :src "/cljs/dylanfprice/com/core.cljs"}])
           [:div {:role "status", :class ["animate-pulse" "pt-1"]}
            [:div {:class ["h-3" "max-w-[640px]" "bg-gray-200" "rounded-full" "mb-3"]}]
