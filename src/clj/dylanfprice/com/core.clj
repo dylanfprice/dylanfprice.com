@@ -24,17 +24,20 @@
 
 (defn build []
   (process/exec "rm" "-rf" public-dir)
+  (process/exec "mkdir" "-p" (str public-dir "/static"))
+  (process/exec "cp" "-r" "src/js" "public/static/js")
+  (process/exec "cp" "-r" "src/cljs" "public/static/cljs")
+  (process/exec {:err :pipe}
+                "tailwindcss"
+                "--optimize"
+                "-i" "src/css/main.css"
+                "-o" "public/static/css/main.css")
   (run!
    (fn [[dest, contents]]
      (let [path (str "public/" dest)]
        (.mkdirs (-> path io/file .getParentFile))
        (spit path contents)))
-   (pages/all-pages))
-  (process/exec {:err :pipe}
-                "tailwindcss"
-                "--optimize"
-                "-i" "src/css/main.css"
-                "-o" "public/static/css/main.css"))
+   (pages/all-pages)))
 
 (defn run-tests [args]
   (apply kaocha.runner/-main args))

@@ -14,19 +14,21 @@
    (merge {:class ["text-gray-600" "hover:text-blue-600"]} attrs)
    body])
 
-(defn- page [title & content]
+(defn- page [head & content]
   [:html {:lang "en-US"}
    [:head
-    [:meta {:charset "utf-8"}]
-    [:meta {:name "viewport" :content "width=device-width"}]
-    [:link {:rel "stylesheet" :href "/static/css/main.css"}]
-    [:title title]]
+    (apply list
+           [:meta {:charset "utf-8"}]
+           [:meta {:name "viewport" :content "width=device-width"}]
+           [:link {:rel "stylesheet" :href "/static/css/main.css"}]
+           head)]
    [:body {:class "p-2"}
     [:header {:class ["max-w-3xl" "mx-auto" "mb-2" "md:mb-10"
                       "font-light" "text-lg"
                       "grid" "grid-flow-row" "md:grid-flow-col"]}
      (header-link {:href "/"} "dylanfprice.com")
      [:nav {:class ["grid" "grid-flow-col" "gap-4" "justify-center" "md:justify-end"]}
+      (header-link {:href "/quote-of-the-day"} "Quote")
       (header-link {:href "/recipes"} "Recipes")]]
     [:main {:class ["max-w-3xl" "mt-2" "mx-auto"]} content]]])
 
@@ -34,7 +36,7 @@
   (str (h/html {:mode :html} (h/raw "<!DOCTYPE html>") hiccup)))
 
 (defn- home-page []
-  ["index.html" (html (page "Home" ""))])
+  ["index.html" (html (page (list [:title "Home"]) ""))])
 
 (defn- page-data
   "Return map of page data for given markdown file."
@@ -50,7 +52,7 @@
 (defn- meal-plans-page []
   ["recipes/meal-plans/index.html"
    (html
-    (page "Meal Plans"
+    (page (list [:title "Meal Plans"])
           [:h1 "Meal Plans"]
           (for [[heading plans] meal-plans]
             [:div
@@ -64,7 +66,7 @@
   (let [recipes-by-category (group-by #(get-in % [:metadata :category]) recipes)]
     ["recipes/index.html"
      (html
-      (page "Recipes"
+      (page (list [:title "Recipes"])
             [:h1 "Recipes"]
             [:a {:href "/recipes/meal-plans"} "Meal Plans"]
             (for [[category recipes] recipes-by-category]
@@ -79,7 +81,7 @@
 
 (defn- recipe-pages []
   (let [recipe-files (map #(str recipes-dir "/" %) (-> recipes-dir io/file .list sort))
-        make-page (fn [{:keys [title hiccup]}] (page title hiccup))
+        make-page (fn [{:keys [title hiccup]}] (page (list [:title title]) hiccup))
         recipes (eduction
                  (map page-data)
                  (map #(assoc % :title (-> % :hiccup recipe-title)))
@@ -89,19 +91,16 @@
         recipe-pages (map (juxt :dest :html) recipes)]
     (conj recipe-pages (recipe-list-page recipes) (meal-plans-page))))
 
-(defn- quote-list-page [quotes]
-  (let [quotes-by-author (->> quotes
-                              (group-by #(get-in % [:metadata :author]))
-                              sort)]
-    ["quotes/index.html"
-     (html
-      (page "Quotes"
-            [:h1 "Quotes"]
-            (for [[author quotes] quotes-by-author]
-              (list
-               [:h2 (-> author name)]
-               [:ul (for [{:keys [link title]} quotes]
-                      [:li [:a {:href link} title]])]))))]))
+(defn- quote-of-the-day-pages [quotes]
+  (list
+   ["quotes/list.edn" (mapv :link quotes)]
+   ["quote-of-the-day/index.html"
+    (html
+     (page (list [:title "Loading..."]
+                 [:script {:type "application/javascript"
+                           :src "/static/js/scittle-0.8.31.js"}]
+                 [:script {:type "application/x-scittle"
+                           :src "/static/cljs/dylanfprice/com/core.cljs"}])))]))
 
 (defn- quote-title [file-name]
   (-> file-name
@@ -117,7 +116,7 @@
 
 (defn- quote-pages []
   (let [quote-files (map #(str quotes-dir "/" %) (-> quotes-dir io/file .list sort))
-        make-page (fn [{:keys [title hiccup]}] (page title hiccup))
+        make-page (fn [{:keys [title hiccup]}] (page (list [:title title]) hiccup))
         quotes (eduction
                 (map page-data)
                 (map #(assoc % :title (-> % :file-name quote-title)))
@@ -126,7 +125,7 @@
                 (map #(assoc % :html (-> % :hiccup html)))
                 quote-files)
         quote-pages (map (juxt :dest :html) quotes)]
-    (conj quote-pages (quote-list-page quotes))))
+    (concat quote-pages (quote-of-the-day-pages quotes))))
 
 (defn all-pages []
   (cons (home-page)
