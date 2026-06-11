@@ -53,4 +53,5 @@
                 ".")
   (process/exec "hut" "pages" "publish"
                 "--domain=dylanfprice.com"
+                "--site-config=site-config.json"
                 "site.tar.gz"))
