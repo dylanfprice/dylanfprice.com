@@ -24,14 +24,14 @@
 
 (defn build []
   (process/exec "rm" "-rf" public-dir)
-  (process/exec "mkdir" "-p" (str public-dir "/static"))
-  (process/exec "cp" "-r" "src/js" "public/static/js")
-  (process/exec "cp" "-r" "src/cljs" "public/static/cljs")
+  (process/exec "mkdir" public-dir)
+  (process/exec "cp" "-r" "src/js" "public/js")
+  (process/exec "cp" "-r" "src/cljs" "public/cljs")
   (process/exec {:err :pipe}
                 "tailwindcss"
                 "--optimize"
                 "-i" "src/css/main.css"
-                "-o" "public/static/css/main.css")
+                "-o" "public/css/main.css")
   (run!
    (fn [[dest, contents]]
      (let [path (str "public/" dest)]

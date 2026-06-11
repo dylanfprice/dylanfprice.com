@@ -20,7 +20,7 @@
     (apply list
            [:meta {:charset "utf-8"}]
            [:meta {:name "viewport" :content "width=device-width"}]
-           [:link {:rel "stylesheet" :href "/static/css/main.css"}]
+           [:link {:rel "stylesheet" :href "/css/main.css"}]
            head)]
    [:body {:class "p-2"}
     [:header {:class ["max-w-3xl" "mx-auto" "mb-2" "md:mb-10"
@@ -98,9 +98,9 @@
     (html
      (page (list [:title "Loading..."]
                  [:script {:type "application/javascript"
-                           :src "/static/js/scittle-0.8.31.js"}]
+                           :src "/js/scittle-0.8.31.js"}]
                  [:script {:type "application/x-scittle"
-                           :src "/static/cljs/dylanfprice/com/core.cljs"}])))]))
+                           :src "/cljs/dylanfprice/com/core.cljs"}])))]))
 
 (defn- quote-title [file-name]
   (-> file-name
