@@ -91,21 +91,24 @@
         recipe-pages (map (juxt :dest :html) recipes)]
     (conj recipe-pages (recipe-list-page recipes) (meal-plans-page))))
 
-(defn- quote-of-the-day-pages [quotes]
-  (list
-   ["quotes/list.edn" (mapv :link quotes)]
-   ["quote-of-the-day/index.html"
-    (html
-     (page (list [:title "Loading..."]
-                 [:script {:type "application/javascript"
-                           :src "/js/scittle-0.8.31.js"}]
-                 [:script {:type "application/x-scittle"
-                           :src "/cljs/dylanfprice/com/core.cljs"}])
-           [:div {:role "status", :class ["animate-pulse" "pt-1"]}
-            [:div {:class ["h-3" "max-w-[640px]" "bg-gray-200" "rounded-full" "mb-3"]}]
-            [:div {:class ["h-3" "max-w-[640px]" "bg-gray-200" "rounded-full" "mb-6"]}]
-            [:div {:class ["h-3" "max-w-[100px]" "bg-gray-200" "rounded-full"]}]
-            [:span {:class "sr-only"} "Loading..."]]))]))
+(defn- quote-of-the-day-page [quotes]
+  ["quote-of-the-day/index.html"
+   (html
+    (page (list [:title "Loading..."]
+                [:script {:type "application/javascript"
+                          :src "/js/scittle-0.8.31.js"}]
+                [:script {:type "application/x-scittle"}
+                 (->> ["(ns dylanfprice.com.quotes)"
+                       (str "(def quotes " (mapv :link quotes) ")")]
+                      (string/join "\n")
+                      h/raw)]
+                [:script {:type "application/x-scittle"
+                          :src "/cljs/dylanfprice/com/core.cljs"}])
+          [:div {:role "status", :class ["animate-pulse" "pt-1"]}
+           [:div {:class ["h-3" "max-w-[640px]" "bg-gray-200" "rounded-full" "mb-3"]}]
+           [:div {:class ["h-3" "max-w-[640px]" "bg-gray-200" "rounded-full" "mb-6"]}]
+           [:div {:class ["h-3" "max-w-[100px]" "bg-gray-200" "rounded-full"]}]
+           [:span {:class "sr-only"} "Loading..."]]))])
 
 (defn- quote-title [file-name]
   (-> file-name
@@ -130,7 +133,7 @@
                 (map #(assoc % :html (-> % :hiccup html)))
                 quote-files)
         quote-pages (map (juxt :dest :html) quotes)]
-    (concat quote-pages (quote-of-the-day-pages quotes))))
+    (conj quote-pages (quote-of-the-day-page quotes))))
 
 (defn all-pages []
   (cons (home-page)

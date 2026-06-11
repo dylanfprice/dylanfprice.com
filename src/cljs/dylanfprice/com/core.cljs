@@ -1,5 +1,5 @@
 (ns dylanfprice.com.core
-  (:require [clojure.edn :as edn]))
+  (:require [dylanfprice.com.quotes :refer [quotes]]))
 
 (def one-day-ms
   (let [hours-per-day 24
@@ -14,16 +14,21 @@
         idx (mod day (count items))]
     (nth items idx)))
 
-(defn goto-link-of-the-day [links]
-  (let [link (pick-item-of-the-day links)]
-    (js/window.location.replace link)))
-
-(defn fetch-edn [url handler]
+(defn fetch-text
+  "Returns js promise."
+  [url]
   (-> (js/fetch url)
-      (.then (fn [resp]
-               (-> (.text resp)
-                   (.then (fn [text]
-                            (handler (edn/read-string text)))))))
+      (.then #(.text %))
       (.catch js/console.log)))
 
-(fetch-edn "/quotes/list.edn" goto-link-of-the-day)
+(defn replace-document [html]
+  (js/document.open)
+  (js/document.write html)
+  (js/document.close))
+
+(defn render-link-of-the-day [links]
+  (let [link (pick-item-of-the-day links)]
+    (-> (fetch-text link)
+        (.then replace-document))))
+
+(render-link-of-the-day quotes)
