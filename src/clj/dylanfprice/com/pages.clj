@@ -100,7 +100,12 @@
                  [:script {:type "application/javascript"
                            :src "/js/scittle-0.8.31.js"}]
                  [:script {:type "application/x-scittle"
-                           :src "/cljs/dylanfprice/com/core.cljs"}])))]))
+                           :src "/cljs/dylanfprice/com/core.cljs"}])
+           [:div {:role "status", :class ["animate-pulse" "pt-1"]}
+            [:div {:class ["h-3" "max-w-[640px]" "bg-gray-200" "rounded-full" "mb-3"]}]
+            [:div {:class ["h-3" "max-w-[640px]" "bg-gray-200" "rounded-full" "mb-6"]}]
+            [:div {:class ["h-3" "max-w-[100px]" "bg-gray-200" "rounded-full"]}]
+            [:span {:class "sr-only"} "Loading..."]]))]))
 
 (defn- quote-title [file-name]
   (-> file-name
