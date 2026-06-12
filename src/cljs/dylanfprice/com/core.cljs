@@ -1,16 +1,23 @@
 (ns dylanfprice.com.core
   (:require [dylanfprice.com.quotes :refer [quotes]]))
 
-(def one-day-ms
-  (let [hours-per-day 24
-        min-per-hour 60
-        sec-per-min 60
-        ms-per-sec 1000]
-    (* 1 hours-per-day min-per-hour sec-per-min ms-per-sec)))
+(def hours-per-day 24)
+(def min-per-hour 60)
+(def sec-per-min 60)
+(def ms-per-sec 1000)
+(def day-ms
+  (* 1 hours-per-day min-per-hour sec-per-min ms-per-sec))
+(def hour-ms
+  (* 1 min-per-hour sec-per-min ms-per-sec))
+
+(defn pdt-time []
+  (let [time (.getTime (js/Date.))
+        pdt-offset (* -7 hour-ms)]
+    (+ time pdt-offset)))
 
 (defn pick-item-of-the-day [items]
-  (let [time (.getTime (js/Date.))
-        day (/ time one-day-ms)
+  (let [time (pdt-time)
+        day (/ time day-ms)
         idx (mod day (count items))]
     (nth items idx)))
 
