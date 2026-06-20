@@ -28,6 +28,12 @@
    minutes or until golden brown. Cool on baking sheets for 2 minutes; remove
    to wire racks to cool completely.
 
+### Pan Cookie Variation
+
+Preheat oven to 350°F. Grease 15x10-inch jelly-roll pan. Prepare dough as
+above. Spread into pan. Bake for 20 to 25 minutes or until golden brown. Cool
+on wire rack.
+
 ## Attribution
 
 *Original Nestle Toll House Chocolate Chip Cookies*
