@@ -1,0 +1,10 @@
+{
+    "fileConfigs": [
+        {
+            "glob": "js/scittle-*.js",
+            "options": {
+                "cacheControl": "max-age=31536000, immutable"
+            }
+        }
+    ]
+}

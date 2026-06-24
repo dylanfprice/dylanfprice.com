@@ -4,7 +4,6 @@
    [clojure.java.io :as io]
    [clojure.java.process :as process]
    [dylanfprice.com.pages :as pages]
-   [hiccup2.core :as h]
    [kaocha.runner]))
 
 (def public-dir "public")
@@ -25,18 +24,20 @@
 
 (defn build []
   (process/exec "rm" "-rf" public-dir)
-  (run!
-   (fn [[path, hiccup]]
-     (let [path (str "public/" path)
-           html (str (h/html {:mode :html} (h/raw "<!DOCTYPE html>") hiccup))]
-       (.mkdirs (-> path io/file .getParentFile))
-       (spit path html)))
-   (pages/all-pages))
+  (process/exec "mkdir" public-dir)
+  (process/exec "cp" "-r" "src/js" "public/js")
+  (process/exec "cp" "-r" "src/cljs" "public/cljs")
   (process/exec {:err :pipe}
                 "tailwindcss"
                 "--optimize"
-                "-i" "src/main.css"
-                "-o" "public/static/main.css"))
+                "-i" "src/css/main.css"
+                "-o" "public/css/main.css")
+  (run!
+   (fn [[dest, contents]]
+     (let [path (str "public/" dest)]
+       (.mkdirs (-> path io/file .getParentFile))
+       (spit path contents)))
+   (pages/all-pages)))
 
 (defn run-tests [args]
   (apply kaocha.runner/-main args))
@@ -52,4 +53,5 @@
                 ".")
   (process/exec "hut" "pages" "publish"
                 "--domain=dylanfprice.com"
+                "--site-config=site-config.json"
                 "site.tar.gz"))
