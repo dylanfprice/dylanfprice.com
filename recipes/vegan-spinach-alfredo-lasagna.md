@@ -16,7 +16,6 @@
 - black pepper, to taste
 - 1 can black olives, chopped
 - 1 to 2 tablespoons nutritional yeast
-- 1/2 teaspoon red pepper flakes
 - 2 teaspoons [quick italian herb blend](/recipes/quick-italian-herb-blend)
 
 ## Directions
