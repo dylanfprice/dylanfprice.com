@@ -14,7 +14,7 @@
 - 3/4 cup packed brown sugar
 - 1 teaspoon vanilla extract
 - 2 large eggs
-- 2 cups (12 oz) semi-sweet chocolate chips
+- 1 cup (6 oz) semi-sweet chocolate chips
 
 ## Directions
 
