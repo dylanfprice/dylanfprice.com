@@ -42,8 +42,10 @@
 
 1. Place the tofu on a cutting board. Place another cutting board (or a plate)
    on top of the tofu and set a few heavy cans on top to weight it down. Let the
-   tofu drain for 15 minutes, then cut into 1/2-inch cubes and set aside. 
-2. In a large bowl, combine the vinegar, lime, and orange juice, garlic, onion
+   tofu drain for 15 minutes. 
+2. Crumble the tofu into a pan with a little oil. Gently cook the tofu on low
+   heat until it loses most of its water content and is firm and spongey.
+3. In a large bowl, combine the vinegar, lime, and orange juice, garlic, onion
    powder, cumin, and chipotle chilis, and stir well. Add the tofu, and toss to
    coat. Refrigerate, stirring occasionally, for at least 1 hour, or up to
    overnight.
