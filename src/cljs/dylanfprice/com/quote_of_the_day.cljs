@@ -1,4 +1,4 @@
-(ns dylanfprice.com.core
+(ns dylanfprice.com.quote-of-the-day
   (:require [dylanfprice.com.quotes :refer [quotes]]))
 
 (def hours-per-day 24)

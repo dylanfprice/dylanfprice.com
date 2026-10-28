@@ -106,7 +106,7 @@
                       h/raw)]
                 [:script {:type "application/x-scittle"
                           :defer true
-                          :src "/cljs/dylanfprice/com/core.cljs"}])
+                          :src "/cljs/dylanfprice/com/quote_of_the_day.cljs"}])
           [:div {:role "status", :class ["animate-pulse" "pt-1"]}
            [:div {:class ["h-3" "max-w-[640px]" "bg-gray-200" "rounded-full" "mb-3"]}]
            [:div {:class ["h-3" "max-w-[640px]" "bg-gray-200" "rounded-full" "mb-6"]}]
