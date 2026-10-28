@@ -3,7 +3,7 @@
    [babashka.http-server :as http-server]
    [clojure.java.io :as io]
    [clojure.java.process :as process]
-   [dylanfprice.com.pages :as pages]
+   [dylanfprice.com.pages.core :as pages]
    [kaocha.runner]))
 
 (def public-dir "public")

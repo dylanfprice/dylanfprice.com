@@ -1,4 +1,4 @@
-(ns dylanfprice.com.pages
+(ns dylanfprice.com.pages.core
   (:require
    [clojure.java.io :as io]
    [clojure.string :as string]
