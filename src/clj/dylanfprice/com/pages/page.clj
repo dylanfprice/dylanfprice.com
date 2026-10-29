@@ -23,8 +23,9 @@
                       "grid" "grid-flow-row" "md:grid-flow-col"]}
      (header-link {:href "/"} "dylanfprice.com")
      [:nav {:class ["grid" "grid-flow-col" "gap-4" "justify-center" "md:justify-end"]}
-      (header-link {:href "/quote-of-the-day/"} "Quote")
-      (header-link {:href "/recipes/"} "Recipes")]]
+      (header-link {:href "/weather/"} "Weather")
+      (header-link {:href "/recipes/"} "Recipes")
+      (header-link {:href "/quote-of-the-day/"} "Quote")]]
     [:main {:class ["max-w-3xl" "mt-2" "mx-auto"]} content]]])
 
 (defn html [hiccup]
