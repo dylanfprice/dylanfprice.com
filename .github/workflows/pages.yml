@@ -54,6 +54,7 @@ jobs:
         run: |
           bin/dev test
           bin/dev build
+          perl -pi -e 's,href="/,href="/dylanfprice.com/,g' public/*.html public/*/*.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
