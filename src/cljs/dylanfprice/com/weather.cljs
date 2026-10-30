@@ -104,12 +104,16 @@
   "Load weather from a \"lat,lng\" string."
   [location]
   (show-loading-spinner true)
-  (let [points (await (fetch-points location))
-        forecast (await (fetch-forecast points))
-        discussion-text (await (fetch-discussion-text points))]
-    (update-forecast points forecast)
-    (update-discussion discussion-text))
-  (show-loading-spinner false))
+  (try
+    (let [points (await (fetch-points location))
+          forecast (await (fetch-forecast points))
+          discussion-text (await (fetch-discussion-text points))]
+      (update-forecast points forecast)
+      (update-discussion discussion-text))
+    (catch js/Error e
+      (append-text (get-element "location") (str "Error: " e)))
+    (finally
+      (show-loading-spinner false))))
 
 (defn- click-handler []
   (let [input-element (get-element "location-input")
