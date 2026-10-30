@@ -14,8 +14,8 @@ submitter:
     - refs/heads/main
 environment:
   site: dylanfprice.com
-  bb_release: 1.12.213
-  tw_release: 4.0.0
+  bb_release: 1.13.229
+  tw_release: 4.3.3
 triggers:
   - action: email
     condition: failure
