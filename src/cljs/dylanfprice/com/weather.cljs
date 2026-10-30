@@ -91,22 +91,50 @@
       (.setAttribute element "class" "mt-2")
       (.appendChild discussion-element element))))
 
+(defn- show-loading-spinner [show]
+  (let [spinner-element (get-element "load-weather-spinner")
+        button-element (get-element "load-weather")]
+    (if show
+      (do (.remove (.-classList spinner-element) "hidden")
+          (.add (.-classList button-element) "hidden"))
+      (do (.add (.-classList spinner-element) "hidden")
+          (.remove (.-classList button-element) "hidden")))))
+
 (defn- ^:async load-weather
   "Load weather from a \"lat,lng\" string."
   [location]
+  (show-loading-spinner true)
   (let [points (await (fetch-points location))
         forecast (await (fetch-forecast points))
         discussion-text (await (fetch-discussion-text points))]
     (update-forecast points forecast)
-    (update-discussion discussion-text)))
+    (update-discussion discussion-text))
+  (show-loading-spinner false))
 
 (defn- click-handler []
   (let [input-element (get-element "location-input")
         location (.-value input-element)]
     (load-weather location)))
 
-(.addEventListener (get-element "location-input")
-                   "keyup"
-                   (fn [e] (when (= (.-key e) "Enter") (click-handler))))
-(.addEventListener (get-element "load-weather")
-                   "click" click-handler)
+(defn- geolocate []
+  (.. js/navigator
+      -geolocation
+      (getCurrentPosition
+       (fn [position]
+         (let [location (str (.. position -coords -latitude)
+                             ","
+                             (.. position -coords -longitude))]
+           (load-weather location))))))
+
+(defn- main []
+  (.addEventListener (get-element "location-input")
+                     "keyup"
+                     (fn [e] (when (= (.-key e) "Enter") (click-handler))))
+
+  (.addEventListener (get-element "load-weather")
+                     "click" click-handler)
+
+  (.addEventListener (get-element "geolocate")
+                     "click" geolocate))
+
+(main)

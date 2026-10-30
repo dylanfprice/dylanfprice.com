@@ -27,6 +27,7 @@
   (process/exec "mkdir" public-dir)
   (process/exec "cp" "-r" "src/js" "public/js")
   (process/exec "cp" "-r" "src/cljs" "public/cljs")
+  (process/exec "cp" "-r" "src/svg" "public/svg")
   (process/exec {:err :pipe}
                 "tailwindcss"
                 "--optimize"
