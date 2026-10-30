@@ -1,0 +1,70 @@
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: [$default-branch]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+env:
+  site: dylanfprice.com
+  bb_release: 1.13.229
+  tw_release: 4.3.3
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Install babashka
+        run: |
+          curl --remote-name\
+               --follow\
+               https://github.com/babashka/babashka/releases/download/v${bb_release}/babashka-${bb_release}-linux-amd64-static.tar.gz
+          sudo tar --extract\
+              --gunzip\
+              --file=babashka-${bb_release}-linux-amd64-static.tar.gz\
+              --directory=/usr/local/bin\
+              bb
+
+      - name: Install tailwindcss
+        run: |
+          sudo curl --output=/usr/local/bin/tailwindcss\
+                    --follow\
+                    https://github.com/tailwindlabs/tailwindcss/releases/download/v${tw_release}/tailwindcss-linux-x64
+          sudo chmod +x /usr/local/bin/tailwindcss
+      - name: Build site
+        run: |
+          bin/dev test
+          bin/dev build
+          bin/dev publish
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload entire repository
+          path: 'public/'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
