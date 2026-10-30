@@ -59,7 +59,6 @@ jobs:
         run: |
           bin/dev test
           bin/dev build
-          bin/dev publish
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
